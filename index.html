@@ -1,0 +1,2629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Entrepreneur Readiness Assessment - Manisha Mozumder Business Consulting Services</title>
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>window.__BACKEND_URL = "https://court-regulatory-monica-dylan.trycloudflare.com";</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #F0F4FA;
+  color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+.container { width: 100%; max-width: 720px; }
+.screen { display: none; }
+.screen.active { display: block; }
+
+.brand-header { text-align: center; margin-bottom: 1.25rem; }
+.brand-header .brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700; color: #1a1a1a; letter-spacing: 0.5px;
+}
+.brand-header .brand-sub {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #82ABE3; margin-top: 4px;
+}
+
+.card {
+  background: #fff; border: 1px solid #E8E2D9;
+  border-radius: 16px; padding: 2rem; margin-bottom: 1rem;
+}
+.welcome-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 2px;
+  text-transform: uppercase; color: #82ABE3; margin-bottom: 1rem;
+}
+h1 {
+  font-family: 'Playfair Display', serif; font-size: 32px;
+  font-weight: 700; line-height: 1.2; margin-bottom: 1rem; color: #1a1a1a;
+}
+h2 { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 0.75rem; }
+.subtitle { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 1.5rem; }
+.note-box {
+  background: #F7F4EF; border-left: 3px solid #82ABE3;
+  padding: 12px 14px; border-radius: 6px; font-size: 13px;
+  color: #555; line-height: 1.6; margin-bottom: 1.5rem;
+}
+
+.input-group { margin-bottom: 1.25rem; }
+label { display: block; font-size: 13px; font-weight: 500; color: #444; margin-bottom: 6px; }
+input, select, textarea {
+  width: 100%; padding: 12px 14px; border: 1px solid #E8E2D9;
+  border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 15px;
+  color: #1a1a1a; background: #FDFCFA; outline: none; transition: border 0.2s;
+}
+input:focus, select:focus, textarea:focus { border-color: #82ABE3; }
+
+.btn {
+  width: 100%; padding: 14px; background: #1a1a1a; color: #fff;
+  border: none; border-radius: 10px; font-family: 'DM Sans', sans-serif;
+  font-size: 15px; font-weight: 500; cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn:hover { background: #333; }
+.btn:active { transform: scale(0.98); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-row { display: flex; gap: 10px; }
+.btn-secondary { background: #F7F4EF; color: #1a1a1a; border: 1px solid #E8E2D9; }
+.btn-secondary:hover { background: #EDE8E0; }
+
+.progress-wrap { margin-bottom: 1.5rem; }
+.progress-top {
+  display: flex; justify-content: space-between;
+  font-size: 13px; color: #999; margin-bottom: 8px;
+}
+.progress-bar-bg { height: 4px; background: #E8E2D9; border-radius: 99px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: #82ABE3; border-radius: 99px; transition: width 0.4s ease; }
+
+.category-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 2px;
+  text-transform: uppercase; color: #82ABE3; margin-bottom: 0.75rem;
+}
+.question-text {
+  font-family: 'Playfair Display', serif; font-size: 22px;
+  line-height: 1.45; color: #1a1a1a; margin-bottom: 1.75rem;
+}
+.question-type-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 99px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.5px;
+  text-transform: uppercase; margin-bottom: 12px;
+  background: #F0F4FA; color: #82ABE3;
+}
+
+/* Likert */
+.scale-labels { display: flex; justify-content: space-between; font-size: 12px; color: #999; margin-bottom: 10px; }
+.scale-options { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 1.5rem; }
+.scale-options input[type="radio"] { display: none; }
+.scale-options label {
+  display: block; width: 100%; text-align: center; padding: 16px 0;
+  border: 1px solid #E8E2D9; border-radius: 10px; font-size: 16px;
+  font-weight: 500; cursor: pointer; transition: all 0.2s;
+  background: #FDFCFA; color: #999; margin-bottom: 0;
+}
+.scale-options input[type="radio"]:checked + label { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.scale-options label:hover { border-color: #82ABE3; color: #82ABE3; }
+
+/* Yes/No */
+.yesno-options { display: flex; gap: 12px; margin-bottom: 1.5rem; }
+.yesno-btn {
+  flex: 1; padding: 20px; border: 2px solid #E8E2D9; border-radius: 12px;
+  font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 600;
+  cursor: pointer; background: #FDFCFA; color: #666; transition: all 0.2s;
+  text-align: center;
+}
+.yesno-btn:hover { border-color: #82ABE3; color: #82ABE3; }
+.yesno-btn.selected { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+
+/* MC */
+.mc-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.5rem; }
+.mc-options input[type="radio"] { display: none; }
+.mc-options label {
+  display: block; padding: 14px 16px; border: 1px solid #E8E2D9;
+  border-radius: 10px; font-size: 14px; font-weight: 400; cursor: pointer;
+  transition: all 0.2s; background: #FDFCFA; color: #555; text-align: left;
+  line-height: 1.5;
+}
+.mc-options input[type="radio"]:checked + label { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.mc-options label:hover { border-color: #82ABE3; color: #82ABE3; }
+
+/* Open-ended */
+.open-textarea {
+  min-height: 120px; resize: vertical; line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+.open-hint { font-size: 12px; color: #999; margin-bottom: 1.5rem; }
+
+/* Video section */
+.video-section { margin-bottom: 1.5rem; }
+.video-container {
+  position: relative; width: 100%; border-radius: 12px; overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+.video-container video {
+  width: 100%; height: auto; display: block; border-radius: 12px;
+}
+.video-container iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+}
+
+.points-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.5rem; }
+.point-card {
+  background: #fff; border: 1px solid #E8E2D9; border-radius: 12px;
+  padding: 16px 14px; text-align: center;
+}
+.point-num {
+  width: 32px; height: 32px; border-radius: 50%; background: #F0F4FA;
+  color: #82ABE3; font-family: 'Playfair Display', serif; font-size: 16px;
+  font-weight: 700; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 10px;
+}
+.point-card h3 { font-family: 'Playfair Display', serif; font-size: 14px; margin-bottom: 6px; color: #1a1a1a; }
+.point-card p { font-size: 12px; color: #777; line-height: 1.5; }
+
+/* Results */
+.results-header { text-align: center; margin-bottom: 1.5rem; }
+.overall-score {
+  font-family: 'Playfair Display', serif; font-size: 56px;
+  font-weight: 700; line-height: 1; margin: 0.5rem 0;
+}
+.overall-out-of { font-size: 18px; color: #999; font-weight: 400; }
+.classification-pill {
+  display: inline-block; padding: 6px 14px; border-radius: 99px;
+  font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; margin-top: 8px;
+}
+.cls-high { background: #E8F5E9; color: #2E7D32; }
+.cls-mod  { background: #FFF3E0; color: #E65100; }
+.cls-low  { background: #FFEBEE; color: #C62828; }
+
+.chart-wrap {
+  background: #FDFCFA; border: 1px solid #E8E2D9; border-radius: 12px;
+  padding: 1rem; margin-bottom: 1.5rem;
+}
+.chart-wrap canvas { max-width: 100%; }
+.chart-title {
+  font-family: 'Playfair Display', serif; font-size: 15px;
+  color: #1a1a1a; margin-bottom: 0.75rem; text-align: center;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif; font-size: 18px;
+  margin-bottom: 0.75rem; margin-top: 1.5rem; color: #1a1a1a;
+}
+
+/* Gauge */
+.gauge-section { display: flex; align-items: center; gap: 24px; margin-bottom: 1.5rem; }
+.gauge-wrap { width: 160px; height: 160px; flex-shrink: 0; position: relative; }
+.gauge-wrap canvas { width: 100% !important; height: 100% !important; }
+.gauge-center {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  text-align: center;
+}
+.gauge-center .gauge-val {
+  font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700;
+}
+.gauge-center .gauge-label { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1px; }
+.gauge-details { flex: 1; }
+.gauge-details .gauge-stat {
+  display: flex; justify-content: space-between; padding: 8px 0;
+  border-bottom: 1px solid #F0EDE6; font-size: 14px;
+}
+.gauge-details .gauge-stat:last-child { border-bottom: none; }
+.gauge-stat-label { color: #666; }
+.gauge-stat-val { font-weight: 600; }
+
+/* Benchmark bars */
+.benchmark-row {
+  display: flex; align-items: center; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid #F0EDE6;
+}
+.benchmark-row:last-child { border-bottom: none; }
+.benchmark-dim { width: 120px; font-size: 13px; font-weight: 500; color: #1a1a1a; flex-shrink: 0; text-align: left; }
+.benchmark-bars { flex: 1; }
+.benchmark-bar-track {
+  height: 10px; background: #F0EDE6; border-radius: 99px;
+  position: relative; margin-bottom: 4px; overflow: visible;
+}
+.benchmark-bar-fill {
+  height: 100%; border-radius: 99px; position: absolute; top: 0; left: 0;
+  transition: width 0.6s ease;
+}
+.benchmark-bar-fill.yours { background: #82ABE3; z-index: 2; }
+.benchmark-marker {
+  position: absolute; top: -4px; width: 3px; height: 18px;
+  background: #C62828; border-radius: 2px; z-index: 3;
+  transition: left 0.6s ease;
+}
+.benchmark-scores { display: flex; justify-content: space-between; font-size: 11px; color: #999; }
+.percentile-tag {
+  display: inline-block; padding: 2px 8px; border-radius: 99px;
+  font-size: 10px; font-weight: 600; margin-left: 8px;
+}
+.pct-high { background: #E8F5E9; color: #2E7D32; }
+.pct-mod { background: #FFF3E0; color: #E65100; }
+.pct-low { background: #FFEBEE; color: #C62828; }
+
+/* Dimension rows */
+.dim-row {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 10px 0; border-bottom: 1px solid #F0EDE6; gap: 12px;
+}
+.dim-row:last-child { border-bottom: none; }
+.dim-name { font-size: 14px; font-weight: 500; color: #1a1a1a; flex: 1; }
+.dim-score { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; white-space: nowrap; }
+.dim-tip { font-size: 13px; color: #777; line-height: 1.55; margin-top: 4px; }
+.score-high { color: #2E7D32; }
+.score-mod  { color: #E65100; }
+.score-low  { color: #C62828; }
+
+.list-block {
+  background: #FDFCFA; border: 1px solid #E8E2D9; border-radius: 10px;
+  padding: 14px 16px; margin-bottom: 1rem;
+}
+.list-block ul { list-style: none; }
+.list-block li {
+  font-size: 14px; color: #333; line-height: 1.6; padding: 6px 0;
+  padding-left: 18px; position: relative;
+}
+.list-block li::before {
+  content: ""; position: absolute; left: 0; top: 14px;
+  width: 6px; height: 6px; border-radius: 50%; background: #82ABE3;
+}
+
+.recommendation-box {
+  background: #FDFCFA; color: #1a1a1a; border-radius: 12px;
+  padding: 1.25rem 1.4rem; margin: 1rem 0 1.25rem;
+  border: 1px solid #E8E2D9;
+}
+.recommendation-box .rec-tag {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #82ABE3; margin-bottom: 8px;
+}
+.recommendation-box h3 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 8px; color: #1a1a1a; }
+.recommendation-box p { font-size: 14px; line-height: 1.65; color: #555; }
+
+/* Reflections */
+.reflection-item { margin-bottom: 16px; }
+.reflection-q { font-size: 13px; font-weight: 500; color: #1a1a1a; margin-bottom: 4px; }
+.reflection-a {
+  font-size: 14px; color: #555; line-height: 1.6; padding: 10px 14px;
+  background: #F7F4EF; border-radius: 8px; font-style: italic;
+}
+
+.disclaimer {
+  font-size: 12px; color: #999; line-height: 1.6; margin-top: 1rem;
+  padding: 12px; background: #FDFCFA; border: 1px dashed #E8E2D9; border-radius: 8px;
+}
+.footer-credit { text-align: center; font-size: 12px; color: #999; margin-top: 1rem; letter-spacing: 1px; }
+.cta-card { background: linear-gradient(180deg, #FDFCFA 0%, #F7F4EF 100%); border-color: #82ABE3; }
+.cta-confirm { font-size: 13px; color: #2E7D32; margin-top: 10px; min-height: 18px; font-weight: 500; }
+
+.intake-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* Tabs */
+.analysis-tabs {
+  display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #E8E2D9;
+}
+.analysis-tab {
+  flex: 1; padding: 12px 8px; text-align: center; font-size: 12px;
+  font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+  color: #999; cursor: pointer; border-bottom: 3px solid transparent;
+  margin-bottom: -2px; transition: all 0.2s; background: none;
+  border-top: none; border-left: none; border-right: none;
+  font-family: 'DM Sans', sans-serif;
+}
+.analysis-tab:hover { color: #82ABE3; }
+.analysis-tab.active { color: #1a1a1a; border-bottom-color: #82ABE3; }
+.analysis-panel { display: none; padding-top: 1.25rem; }
+.analysis-panel.active { display: block; }
+
+/* Regional */
+
+
+/* Patterns */
+.pattern-card {
+  background: #FDFCFA; border: 1px solid #E8E2D9; border-radius: 12px;
+  padding: 16px 18px; margin-bottom: 12px; transition: border-color 0.2s;
+}
+.pattern-card:hover { border-color: #82ABE3; }
+.pattern-icon { font-size: 20px; margin-bottom: 6px; }
+.pattern-label { font-family: 'Playfair Display', serif; font-size: 16px; color: #1a1a1a; margin-bottom: 4px; }
+.pattern-desc { font-size: 13px; color: #666; line-height: 1.6; }
+.pattern-tag { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; margin-top: 8px; }
+.pattern-tag.strength { background: #E8F5E9; color: #2E7D32; }
+.pattern-tag.gap { background: #FFEBEE; color: #C62828; }
+.pattern-tag.insight { background: #E3F2FD; color: #1565C0; }
+.pattern-tag.caution { background: #FFF3E0; color: #E65100; }
+
+/* Accordion */
+.dimension-accordion { margin-bottom: 12px; border: 1px solid #E8E2D9; border-radius: 12px; overflow: hidden; }
+.dimension-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 18px; cursor: pointer; background: #FDFCFA;
+  transition: background 0.2s; border: none; width: 100%;
+  font-family: 'DM Sans', sans-serif; text-align: left;
+}
+.dimension-header:hover { background: #F7F4EF; }
+.dimension-header .dim-h-left { display: flex; align-items: center; gap: 10px; }
+.dimension-header .dim-h-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; }
+.dimension-header .dim-h-score { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; }
+.dimension-header .dim-h-arrow { font-size: 14px; color: #999; transition: transform 0.2s; margin-left: 8px; }
+.dimension-accordion.open .dim-h-arrow { transform: rotate(180deg); }
+.dimension-body { display: none; padding: 0 18px 16px; background: #fff; }
+.dimension-accordion.open .dimension-body { display: block; }
+
+.criteria-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #F0EDE6; }
+.criteria-row:last-child { border-bottom: none; }
+.criteria-num {
+  width: 24px; height: 24px; border-radius: 50%; background: #F0F4FA;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; color: #82ABE3; flex-shrink: 0;
+}
+.criteria-text { flex: 1; font-size: 13px; color: #555; line-height: 1.5; }
+.criteria-score { font-weight: 700; font-size: 14px; min-width: 30px; text-align: right; }
+
+.dim-grounding-box {
+  background: #F0F4FA; border-left: 3px solid #82ABE3;
+  padding: 10px 14px; border-radius: 6px; margin-top: 8px;
+  font-size: 12px; color: #555; line-height: 1.5;
+}
+.dim-grounding-box .cite { font-style: italic; color: #777; font-size: 11px; }
+
+/* Legend */
+.legend-row { display: flex; gap: 16px; margin-bottom: 12px; font-size: 12px; color: #777; }
+.legend-swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 4px; vertical-align: middle; }
+
+/* Sources modal */
+.sources-modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); z-index: 9999;
+  display: none; align-items: center; justify-content: center; padding: 1rem;
+}
+.sources-modal-overlay.active { display: flex; }
+.sources-modal {
+  background: #fff; border-radius: 16px; max-width: 760px; width: 100%;
+  max-height: 85vh; overflow-y: auto; padding: 2rem;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.15);
+}
+.sources-modal h2 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 0.5rem; }
+.sources-modal h3 { font-family: 'Playfair Display', serif; font-size: 16px; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+.sources-modal p, .sources-modal li { font-size: 13px; color: #555; line-height: 1.7; }
+.sources-modal ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+.sources-modal ol li { margin-bottom: 6px; }
+.sources-modal .ref-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; margin-left: 6px; }
+.sources-modal .ref-tag.pr { background: #E8F5E9; color: #2E7D32; }
+.sources-modal .ref-tag.gem { background: #E3F2FD; color: #1565C0; }
+.sources-modal .ref-tag.gii { background: #F3E5F5; color: #6A1B9A; }
+.sources-modal .ref-tag.wb { background: #FFF3E0; color: #E65100; }
+.sources-close { float: right; background: none; border: none; font-size: 22px; cursor: pointer; color: #999; }
+.sources-close:hover { color: #1a1a1a; }
+.sources-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 18px; border: 1px solid #E8E2D9; border-radius: 10px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  color: #555; cursor: pointer; background: #FDFCFA; transition: all 0.2s; margin-top: 0.75rem;
+}
+.sources-btn:hover { border-color: #82ABE3; color: #82ABE3; }
+
+/* Overall matrix */
+.overall-matrix {
+  width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; margin-bottom: 1rem;
+}
+.overall-matrix th {
+  text-align: left; padding: 10px 12px; font-weight: 600; font-size: 11px;
+  letter-spacing: 1px; text-transform: uppercase; color: #999;
+  border-bottom: 2px solid #E8E2D9; background: #FDFCFA;
+}
+.overall-matrix td { padding: 10px 12px; border-bottom: 1px solid #F0EDE6; }
+.overall-matrix tr:last-child td { border-bottom: none; }
+
+@media (max-width: 520px) {
+  .intake-grid { grid-template-columns: 1fr; }
+  .points-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 26px; }
+  .question-text { font-size: 19px; }
+  .overall-score { font-size: 44px; }
+  .scale-options label { padding: 14px 0; font-size: 15px; }
+  .card { padding: 1.5rem; }
+  .analysis-tab { font-size: 10px; padding: 10px 4px; letter-spacing: 0.5px; }
+  .gauge-section { flex-direction: column; align-items: center; }
+  .benchmark-dim { width: 90px; font-size: 11px; }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .no-print { display: none !important; }
+  .card { border: 1px solid #ddd; box-shadow: none; page-break-inside: avoid; }
+  /* tabs removed */
+  .sources-modal-overlay { display: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="brand-header no-print">
+    <div class="brand-name">Manisha Mozumder</div>
+    <div class="brand-sub">Business Consulting Services</div>
+  </div>
+
+  <!-- ============================================= -->
+  <!-- SCREEN 1: WELCOME / INTAKE                    -->
+  <!-- ============================================= -->
+  <div class="screen active" id="screen-welcome">
+    <div class="card">
+      <div class="welcome-tag">Readiness Assessment</div>
+      <h1>Are you ready for business consulting?</h1>
+
+      <!-- VIDEO SECTION -->
+      <div class="video-section">
+        <div class="video-container">
+          <video controls preload="metadata">
+            <source src="readiness_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <p class="subtitle">A 42-question diagnostic with mixed question types across five readiness dimensions. Takes about 12-15 minutes. Your honest answers produce a maturity-based readiness profile with actionable next steps.</p>
+
+      <div class="note-box">
+        <strong>Honesty matters.</strong> This tool depends on honest self-assessment. There are no right answers. Aspirational responses lead to misleading recommendations.
+      </div>
+
+      <div class="intake-grid">
+        <div class="input-group">
+          <label for="user-name">Your name</label>
+          <input id="user-name" type="text" placeholder="Full name"/>
+        </div>
+        <div class="input-group">
+          <label for="user-business">Business / venture</label>
+          <input id="user-business" type="text" placeholder="Business name (optional)"/>
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="user-stage">Stage of your business</label>
+        <select id="user-stage">
+          <option value="">Select your stage</option>
+          <option value="idea">Idea stage: not started yet</option>
+          <option value="early">Early stage: launched within last 12 months</option>
+          <option value="growing">Growing: operating 1 to 3 years</option>
+          <option value="established">Established: operating 3+ years</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="user-region">Your region (for environmental context)</label>
+        <select id="user-region">
+          <option value="">Select your region</option>
+          <option value="north_america">North America</option>
+          <option value="western_europe">Western Europe</option>
+          <option value="eastern_europe">Eastern Europe</option>
+          <option value="south_asia">South Asia</option>
+          <option value="southeast_asia">Southeast Asia</option>
+          <option value="east_asia">East Asia</option>
+          <option value="middle_east">Middle East and North Africa</option>
+          <option value="sub_saharan_africa">Sub-Saharan Africa</option>
+          <option value="latin_america">Latin America</option>
+          <option value="oceania">Oceania (Australia and NZ)</option>
+        </select>
+      </div>
+
+      <button class="btn" id="start-btn">Begin assessment</button>
+    </div>
+    <div class="footer-credit">A diagnostic asset by Manisha Mozumder Business Consulting Services</div>
+  </div>
+
+  <!-- ============================================= -->
+  <!-- SCREEN 2: QUESTIONS                           -->
+  <!-- ============================================= -->
+  <div class="screen" id="screen-questions">
+    <div class="card">
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <span id="progress-label">Question 1 of 27</span>
+          <span id="progress-percent">4%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-bar" style="width:4%"></div>
+        </div>
+      </div>
+
+      <div class="category-tag" id="category-tag">About You</div>
+      <div id="question-type-badge-wrap"></div>
+      <div class="question-text" id="question-text">Question text here</div>
+
+      <!-- Likert block -->
+      <div id="likert-block" style="display:none;">
+        <div class="scale-labels"><span>Strongly disagree</span><span>Strongly agree</span></div>
+        <div class="scale-options" id="scale-options">
+          <input type="radio" name="answer" id="ans-1" value="1"/><label for="ans-1">1</label>
+          <input type="radio" name="answer" id="ans-2" value="2"/><label for="ans-2">2</label>
+          <input type="radio" name="answer" id="ans-3" value="3"/><label for="ans-3">3</label>
+          <input type="radio" name="answer" id="ans-4" value="4"/><label for="ans-4">4</label>
+          <input type="radio" name="answer" id="ans-5" value="5"/><label for="ans-5">5</label>
+        </div>
+      </div>
+
+      <!-- Yes/No block -->
+      <div id="yesno-block" style="display:none;">
+        <div class="yesno-options">
+          <button type="button" class="yesno-btn" data-value="5" id="yn-yes">Yes</button>
+          <button type="button" class="yesno-btn" data-value="1" id="yn-no">No</button>
+        </div>
+      </div>
+
+      <!-- Multiple Choice block -->
+      <div id="mc-block" style="display:none;">
+        <div class="mc-options" id="mc-options"></div>
+      </div>
+
+      <!-- Open-ended block -->
+      <div id="open-block" style="display:none;">
+        <textarea id="open-answer" class="open-textarea" placeholder="Share your honest thoughts here..."></textarea>
+        <div class="open-hint">This question is optional but adds depth to your profile.</div>
+      </div>
+
+      <!-- Screening block -->
+      <div id="screening-block" style="display:none;">
+        <div class="mc-options" id="screening-options"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" id="back-btn" style="flex:1;">Back</button>
+        <button class="btn" id="next-btn" disabled style="flex:2;">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================= -->
+  <!-- SCREEN 3: RESULTS                             -->
+  <!-- ============================================= -->
+  <div class="screen" id="screen-results">
+    <div id="results-content">
+
+      <!-- ── STEP 1: YOUR SCORE ── -->
+      <div class="card">
+        <div class="results-header">
+          <div class="welcome-tag">Step 1 of 4</div>
+          <h2 id="result-name">Your Score</h2>
+          <div class="classification-pill" id="classification-pill"></div>
+        </div>
+
+        <div class="gauge-section">
+          <div class="gauge-wrap"><canvas id="gauge-chart"></canvas>
+            <div class="gauge-center">
+              <div class="gauge-val" id="gauge-val">0.0</div>
+              <div class="gauge-label">of 5</div>
+            </div>
+          </div>
+          <div class="gauge-details" id="gauge-details"></div>
+        </div>
+
+        <div class="section-title" style="margin-top:0;">Dimension Scores</div>
+        <div class="legend-row">
+          <span><span class="legend-swatch" style="background:#1B5E20;"></span> Advanced (4.1+)</span>
+          <span><span class="legend-swatch" style="background:#2E7D32;"></span> Competent (3.3+)</span>
+          <span><span class="legend-swatch" style="background:#E65100;"></span> Developing (2.5+)</span>
+          <span><span class="legend-swatch" style="background:#B71C1C;"></span> Aware/Unaware</span>
+        </div>
+        <div id="benchmark-body"></div>
+        <div id="reference-citation" style="font-size:11px;color:#999;font-style:italic;margin-top:6px;line-height:1.5;"></div>
+      </div>
+
+      <!-- ── STEP 2: WHAT THIS MEANS ── -->
+      <div class="card">
+        <div class="welcome-tag">Step 2 of 4</div>
+        <h2>What This Means</h2>
+
+        <div class="chart-wrap">
+          <div class="chart-title">Your Readiness Shape</div>
+          <canvas id="radar-chart" height="320"></canvas>
+        </div>
+
+        <div class="section-title" style="margin-top:0;">Diagnostic Patterns</div>
+        <div style="font-size:13px;color:#777;margin-bottom:12px;line-height:1.5;">Research-backed patterns detected from the relationship between your dimension scores.</div>
+        <div id="patterns-list"></div>
+
+        <div class="recommendation-box">
+          <div class="rec-tag">Consulting Readiness</div>
+          <h3 id="rec-headline"></h3>
+          <p id="rec-body"></p>
+          <div id="coachability-insight" style="margin-top:12px;padding:10px 14px;background:rgba(130,171,227,0.1);border-radius:8px;font-size:13px;line-height:1.6;color:#333;border-left:3px solid #82ABE3;"></div>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: WHAT TO DO NEXT ── -->
+      <div class="card">
+        <div class="welcome-tag">Step 3 of 4</div>
+        <h2>What to Do Next</h2>
+
+        <div class="section-title" style="margin-top:0;">Your Highest-Leverage Gaps</div>
+        <div class="list-block" id="specific-gaps-list"></div>
+
+        <div class="section-title">Action Plan</div>
+        <div id="action-plan-body"></div>
+
+        <div id="env-context-section" style="display:none;">
+          <div class="section-title">Your Environment</div>
+          <div id="env-context-body"></div>
+        </div>
+      </div>
+
+      <!-- ── STEP 4: FULL DETAILS ── -->
+      <div class="card">
+        <div class="welcome-tag">Step 4 of 4</div>
+        <h2>Full Details</h2>
+
+        <div id="reflections-section"></div>
+
+        <div class="section-title">Dimension Comparison</div>
+        <canvas id="bar-chart" height="260"></canvas>
+
+        <div class="section-title">Question-by-Question Breakdown</div>
+        <div id="structured-dimensions-body"></div>
+
+        <div class="section-title">All Detected Patterns</div>
+        <div id="patterns-list-full"></div>
+
+        <button class="sources-btn no-print" id="open-sources-btn">&#x1F4DA; Sources and Methodology</button>
+      </div>
+
+      <!-- Sources Modal -->
+      <div class="sources-modal-overlay" id="sources-modal-overlay">
+        <div class="sources-modal">
+          <button class="sources-close" id="close-sources-btn">&times;</button>
+          <h2>Sources and Methodology</h2>
+          <p style="color:#777;margin-bottom:1rem;">Full transparency on the data, frameworks and academic research behind this assessment tool.</p>
+
+          <h3>I. Theoretical Foundation</h3>
+          <p>This tool synthesizes five readiness dimensions from established peer-reviewed instruments in entrepreneurship research:</p>
+          <ol>
+            <li><strong>Strategic Readiness</strong> from the Entrepreneurial Orientation (EO) construct. <span class="ref-tag pr">Peer-reviewed</span><br/><em>Lumpkin, G.T. &amp; Dess, G.G. (1996). "Clarifying the Entrepreneurial Orientation Construct and Linking It to Performance." Academy of Management Review, 21(1), 135-172.</em></li>
+            <li><strong>Operational Readiness</strong> from the RISE model's technical and managerial skill domains. <span class="ref-tag pr">Peer-reviewed</span><br/><em>Lyons, T.S., Lyons, J.S. &amp; Jolley, G.J. (2019). "The Readiness Inventory for Successful Entrepreneurship (RISE): A Tool for University Engagement in Entrepreneurial Learning." Journal of Economic Development in Higher Education, 2.</em></li>
+            <li><strong>Financial Awareness</strong> from the Financial Literacy framework. <span class="ref-tag pr">Peer-reviewed</span><br/><em>Lusardi, A. &amp; Mitchell, O.S. (2014). "The Economic Importance of Financial Literacy." Journal of Economic Literature, 52(1), 5-44.</em></li>
+            <li><strong>Entrepreneurial Mindset</strong> from the Entrepreneurial Self-Efficacy (ESE) construct. <span class="ref-tag pr">Peer-reviewed</span><br/><em>Chen, C.C., Greene, P.G. &amp; Crick, A. (1998). "Does Entrepreneurial Self-Efficacy Distinguish Entrepreneurs from Managers?" Journal of Business Venturing, 13(4), 295-316.</em></li>
+            <li><strong>Implementation Capacity</strong> from Effectuation Theory and ESE action dimensions. <span class="ref-tag pr">Peer-reviewed</span><br/><em>Sarasvathy, S.D. (2001). "Causation and Effectuation." Academy of Management Review, 26(2), 243-263.</em></li>
+          </ol>
+
+          <h3>II. Supporting Meta-Analyses and Reviews</h3>
+          <p>Pattern detection rules and scoring interpretation are supported by the following meta-analytic evidence:</p>
+          <ol>
+            <li><em>Rauch, A. &amp; Frese, M. (2007). "Let's Put the Person Back into Entrepreneurship Research: A Meta-Analysis on the Relationship Between Business Owners' Personality Traits, Business Creation, and Success." European Journal of Work and Organizational Psychology, 16(4), 353-385.</em> Meta-analysis of 116 studies. Found that traits matched to entrepreneurial tasks (need for achievement, self-efficacy, innovativeness, stress tolerance, proactive personality) predict both business creation and success. <span class="ref-tag pr">Peer-reviewed</span></li>
+            <li><em>Zhao, H., Seibert, S.E. &amp; Hills, G.E. (2005). "The Mediating Role of Self-Efficacy in the Development of Entrepreneurial Intentions." Journal of Applied Psychology, 90(6), 1265-1272.</em> Found that entrepreneurial self-efficacy fully mediates the effects of entrepreneurship courses, prior experience and risk propensity on entrepreneurial intentions. <span class="ref-tag pr">Peer-reviewed</span></li>
+            <li><em>Ericsson, K.A., Krampe, R.T. &amp; Tesch-Romer, C. (1993). "The Role of Deliberate Practice in the Acquisition of Expert Performance." Psychological Review, 100(3), 363-406.</em> Foundational paper establishing that targeted practice on specific weaknesses produces faster skill development than general practice. <span class="ref-tag pr">Peer-reviewed</span></li>
+            <li><em>Aldrich, H.E. &amp; Martinez, M.A. (2001). "Many Are Called, but Few Are Chosen: An Evolutionary Perspective for the Study of Entrepreneurship." Entrepreneurship Theory and Practice, 25(4), 41-56.</em> Argued that organizing processes (building teams, acquiring resources, creating structures) are as important as opportunity recognition for entrepreneurial success. <span class="ref-tag pr">Peer-reviewed</span></li>
+            <li><em>Weinberg, F.J. &amp; Hausfeld, M. (2024). "The role of relational mechanisms in the executive coaching process on client outcomes in distance coaching relationships." Journal of Managerial Psychology, 39(6), 695-715.</em> Found that coaching readiness predicts learning and performance improvement outcomes in coaching engagements. <span class="ref-tag pr">Peer-reviewed</span></li>
+          </ol>
+
+          <h3>III. Mixed-Method Assessment Design</h3>
+          <p>This tool uses three question formats per dimension: Likert scales (1-5), multiple choice scenario questions and open-ended reflection prompts. This mixed-method approach surfaces gaps that a single question format would miss. Open-ended questions reveal confidence vs. competence gaps and provide qualitative consulting hooks. Two original question types unique to this tool measure consulting readiness and coachability.</p>
+          <p><em>Scale design methodology informed by: DeVellis, R.F. (2016). "Scale Development: Theory and Applications." 4th ed., SAGE Publications.</em> <span class="ref-tag pr">Peer-reviewed</span></p>
+
+          <h3>IV. Maturity Model</h3>
+          <p>Instead of comparing your scores to external benchmark averages that become outdated, this tool uses a <strong>competency maturity model</strong> grounded in peer-reviewed entrepreneurial development research:</p>
+          <ol>
+            <li><strong>Entrepreneurial Development System:</strong> <em>Lichtenstein, G.A. &amp; Lyons, T.S. (2001). "The Entrepreneurial Development System: Transforming Business Talent and Community Economies." Economic Development Quarterly, 15(1), 3-20.</em> Proposed a skill-based framework for assessing and developing entrepreneurial competencies across progressive levels. <span class="ref-tag pr">Peer-reviewed</span></li>
+            <li><strong>Skill-Based Development:</strong> <em>Kutzhanova, N., Lyons, T.S. &amp; Lichtenstein, G.A. (2009). "Skill-Based Development of Entrepreneurs and the Role of Personal and Peer Group Coaching in Enterprise Development." Economic Development Quarterly, 23(3), 193-210.</em> Extended the competency progression model with empirical evidence for coaching-based skill development. <span class="ref-tag pr">Peer-reviewed</span></li>
+            <li><strong>RISE Framework:</strong> <em>Lyons, T.S., Lyons, J.S. &amp; Jolley, G.J. (2019). "The Readiness Inventory for Successful Entrepreneurship (RISE): A Tool for University Engagement in Entrepreneurial Learning." Journal of Economic Development in Higher Education, 2.</em> Applied the maturity model specifically to entrepreneurial readiness assessment. <span class="ref-tag pr">Peer-reviewed</span></li>
+          </ol>
+          <p><strong>Why a maturity model instead of benchmarks:</strong> External benchmarks (e.g. average scores from a specific study) are snapshots of a specific population at a specific time. They become outdated and do not apply equally to all entrepreneurs. A maturity model defines progressive competency levels that remain valid regardless of when or where the assessment is taken. Your score maps to a level (Unaware, Aware, Developing, Competent, Advanced) with descriptors specific to each dimension.</p>
+
+          <h3>V. Maturity Levels</h3>
+          <ol>
+            <li><strong>Advanced (4.1-5.0):</strong> Strong demonstrated capability. Ready to scale, mentor others or optimize. Corresponds to the highest skill tier in Lichtenstein &amp; Lyons (2001).</li>
+            <li><strong>Competent (3.3-4.0):</strong> Solid foundation with evidence of capability. Can absorb and implement consulting recommendations effectively.</li>
+            <li><strong>Developing (2.5-3.2):</strong> Early progress with identifiable gaps. Focused skill-building will yield significant returns.</li>
+            <li><strong>Aware (1.9-2.4):</strong> Recognizes the importance of this dimension but has not taken meaningful action. Foundational work needed.</li>
+            <li><strong>Unaware (1.0-1.8):</strong> Has not engaged with this dimension. Critical foundational gaps exist.</li>
+          </ol>
+          <p>Source: Adapted from Lichtenstein &amp; Lyons (2001) and Kutzhanova et al. (2009) competency progression frameworks.</p>
+
+          <h3>VI. Coachability and Consulting Readiness (Original)</h3>
+          <p>This tool includes questions specifically designed to measure readiness for a consulting engagement. These are not found in standard ESE or EO instruments. They assess:</p>
+          <ol>
+            <li>Prior experience implementing professional advice</li>
+            <li>Willingness to act on recommendations even when they conflict with existing beliefs</li>
+            <li>Preparedness to brief a consultant with organized information</li>
+          </ol>
+          <p>These questions are original to this tool and have not been validated through independent psychometric testing. Their purpose is diagnostic: to help the consultant (and the entrepreneur) gauge whether a consulting engagement is likely to produce results given the entrepreneur's current disposition toward external guidance. Research by Weinberg and Hausfeld (2024) found that coaching readiness directly predicts learning outcomes and work performance improvements.</p>
+          <p><em>Theoretical grounding: Weinberg, F.J. &amp; Hausfeld, M. (2024). "The role of relational mechanisms in the executive coaching process on client outcomes in distance coaching relationships." Journal of Managerial Psychology, 39(6), 695-715. Found that coaching readiness directly predicts personal learning and work performance improvements in coaching engagements.</em> <span class="ref-tag pr">Peer-reviewed</span></p>
+
+          <h3>VII. Action Plan Methodology</h3>
+          <p>The structured action plan (This Week / This Month / This Quarter) is prioritized by the user's weakest dimensions. The progressive structure is grounded in:</p>
+          <ol>
+            <li><em>Lichtenstein &amp; Lyons (2001)</em>: Progressive skill-building methodology where competencies are developed in stages.</li>
+            <li><em>Ericsson et al. (1993)</em>: Deliberate practice framework showing that targeted improvement on specific weak points produces faster development than general skill-building.</li>
+          </ol>
+
+          <h3>VIII. Environmental Context</h3>
+          <p>When a region is selected, the results include structural environmental conditions that interact with the user's dimension scores. These are qualitative conditions (not statistical benchmarks) drawn from:</p>
+          <ol>
+            <li><em>GEM (2026). Global Entrepreneurship Monitor 2025/2026 Global Report: From Uncertainty to Opportunity.</em> Structural conditions around entrepreneurial activity, fear of failure and ecosystem support across 53 economies. <span class="ref-tag pr">Peer-reviewed</span></li>
+            <li><em>WIPO (2024). Global Innovation Index 2024: Unlocking the Promise of Social Entrepreneurship. 17th Edition.</em> Innovation ecosystem rankings and structural conditions across 133 economies. <span class="ref-tag pr">Peer-reviewed</span></li>
+            <li><em>World Bank (2024). Business Ready (B-READY) 2024.</em> Regulatory framework and public services assessment replacing the discontinued Ease of Doing Business index. <span class="ref-tag pr">Institutional</span></li>
+          </ol>
+          <p>These conditions describe structural realities (e.g. "limited early-stage capital availability," "strong regulatory transparency") that remain directionally stable over time. They are not numerical benchmarks and do not require annual updates to remain valid.</p>
+
+          <h3>IX. Limitations</h3>
+          <ol>
+            <li>This is a <strong>screening tool, not a diagnostic instrument</strong>. It has not been independently validated through psychometric testing (e.g. test-retest reliability, convergent validity).</li>
+            <li>Self-report bias: responses are subject to self-serving bias and social desirability effects.</li>
+            <li>Maturity levels are based on competency progression frameworks from entrepreneurship research (Lichtenstein &amp; Lyons, 2001; Kutzhanova et al., 2009). The specific score cutpoints (4.1, 3.3, 2.5, 1.9) are adapted from these frameworks and applied to a 5-point scale.</li>
+            <li>All scored questions use graduated scales (Likert 1-5 or weighted multiple choice). This avoids the distortion caused by binary scoring and produces smoother dimension averages.</li>
+            <li>Open-ended questions are not scored numerically. They provide qualitative context for consulting conversations.</li>
+            <li>Consulting readiness and coachability questions are original to this tool and have not been externally validated.</li>
+            <li><strong>Source currency:</strong> The maturity model approach avoids the outdating problem inherent in external benchmarks. The competency progression framework (Lichtenstein &amp; Lyons, 2001) defines developmental stages that remain valid regardless of when the assessment is taken.</li>
+          </ol>
+          <p style="margin-top:1.5rem;font-size:11px;color:#999;">Designed by Manisha Mozumder Business Consulting Services as a pre-consulting screening instrument.</p>
+        </div>
+      </div>
+
+      <div class="card no-print" id="service-rec-card" style="display:none;">
+        <div class="section-title">Recommended Service</div>
+        <div id="service-rec-content"></div>
+        <div id="service-rec-alt" style="margin-top:20px;"></div>
+      </div>
+
+      <div class="card cta-card no-print" id="cta-card">
+        <div class="welcome-tag" id="cta-tag">Next Step</div>
+        <h2 id="cta-headline">Want to discuss your profile with Manisha?</h2>
+        <p class="subtitle" id="cta-subtitle">Send your full readiness profile to Manisha Mozumder Business Consulting Services and book a 30-minute discovery call.</p>
+        <div class="input-group">
+          <label for="cta-email">Your email</label>
+          <input id="cta-email" type="email" placeholder="you@example.com"/>
+        </div>
+        <div class="input-group">
+          <label for="cta-note">One thing you'd like to discuss (optional)</label>
+          <input id="cta-note" type="text" placeholder="e.g., scaling revenue, operational gaps..."/>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-secondary" id="copy-summary-btn" style="flex:1;">Copy summary</button>
+          <button class="btn" id="send-email-btn" style="flex:2;">Send to Manisha Mozumder</button>
+        </div>
+        <div class="cta-confirm" id="cta-confirm"></div>
+      </div>
+
+      <div class="disclaimer">
+        This is a screening tool, not a diagnostic. It identifies readiness for a consulting engagement based on your self-assessment. It does not replace a professional consulting review.
+      </div>
+    </div>
+
+    <div class="btn-row no-print">
+      <button class="btn btn-secondary" id="restart-btn" style="flex:1;">Retake</button>
+      <button class="btn" id="export-btn" style="flex:2;">Download PDF</button>
+    </div>
+    <div class="footer-credit no-print">Manisha Mozumder Business Consulting Services</div>
+  </div>
+
+</div>
+
+<script>
+// =========================================================
+// DIMENSIONS
+// =========================================================
+const DIMENSIONS = [
+  { key: "strategic", label: "Strategic Readiness",
+    why: "Without strategic clarity, consulting recommendations have no anchor.",
+    cite: "Lumpkin & Dess (1996), Entrepreneurial Orientation",
+    maturity: {
+      advanced:   "Strong strategic clarity with validated product-market fit. Systematically monitors competitive landscape and adjusts positioning.",
+      competent:  "Clear value proposition validated by customer feedback. Documented competitive positioning and a written growth plan.",
+      developing: "Has a value proposition and target market but has not tested them rigorously. Some competitive awareness but gaps remain.",
+      aware:      "Recognizes the need for strategic clarity but has not validated core assumptions with customers or market data.",
+      unaware:    "No articulated value proposition, target market or competitive positioning. Operating on instinct alone."
+    }},
+  { key: "operational", label: "Operational Readiness",
+    why: "Without basic processes and structure, advice cannot be implemented.",
+    cite: "Lyons et al. (2019), RISE Framework",
+    maturity: {
+      advanced:   "Comprehensive SOPs, redundancy in key roles, scalable systems. Business operates independently of the founder.",
+      competent:  "Core operations are documented and can run without the founder for short periods. Delegation systems in place.",
+      developing: "Some key processes are documented. Beginning to delegate but still heavily founder-dependent.",
+      aware:      "Recognizes operational gaps but has not formalized any processes, documentation or systems.",
+      unaware:    "No documented processes. All knowledge is in the founder's head. No delegation structure exists."
+    }},
+  { key: "financial", label: "Financial Awareness",
+    why: "Decisions without financial visibility are guesses.",
+    cite: "Lusardi & Mitchell (2014), Financial Literacy",
+    maturity: {
+      advanced:   "Sophisticated financial management with forecasting, scenario planning and data-driven investment decisions.",
+      competent:  "Detailed financial tracking with regular reviews. Understands CAC, LTV, runway and unit economics.",
+      developing: "Tracks revenue and expenses. Has basic understanding of margins but lacks detailed unit economics.",
+      aware:      "Knows financial visibility matters but does not track consistently. Relies on rough estimates.",
+      unaware:    "No financial tracking beyond bank balance. Cannot articulate unit economics, runway or break-even point."
+    }},
+  { key: "mindset", label: "Entrepreneurial Mindset",
+    why: "Consulting requires resilience, adaptability and decisiveness.",
+    cite: "Chen, Greene & Crick (1998), Entrepreneurial Self-Efficacy",
+    maturity: {
+      advanced:   "Treats all feedback as data. High tolerance for ambiguity. Makes confident decisions with incomplete information and recovers from setbacks rapidly.",
+      competent:  "Actively seeks critical feedback and makes evidence-based pivots. Recovers from setbacks within days.",
+      developing: "Occasionally seeks feedback and can adjust course. Resilience is building but inconsistent under pressure.",
+      aware:      "Intellectually open to feedback but does not actively seek it. Recovery from setbacks is slow.",
+      unaware:    "Avoids feedback, takes setbacks personally and is resistant to changing course. High attachment to original plan."
+    }},
+  { key: "execution", label: "Implementation Capacity",
+    why: "Recommendations only create value when executed.",
+    cite: "Sarasvathy (2001), Effectuation Theory",
+    maturity: {
+      advanced:   "High execution velocity with measurement loops. Scales execution through delegation and systems. Consistent follow-through.",
+      competent:  "Consistently meets deadlines. Has systems for measuring outcomes and can reallocate resources when priorities shift.",
+      developing: "Some goals are met. Beginning to build accountability structures but follow-through is inconsistent.",
+      aware:      "Sets goals but rarely meets them. Lacks systems for tracking progress or measuring results.",
+      unaware:    "No structured goal-setting, no deadlines, no accountability systems. Activity without measurable output."
+    }}
+];
+
+// =========================================================
+// IDEA STAGE QUESTIONS (mixed types)
+// =========================================================
+const QUESTIONS_IDEA = [
+  // ── Strategic Readiness (8: 5 Likert + 2 MC + 1 Open) ──
+  { dim: "strategic", type: "likert", text: "I can explain the specific problem my business solves in one sentence that a stranger would immediately understand." },
+  { dim: "strategic", type: "likert", text: "I have identified at least three direct competitors and I can explain exactly why a customer would choose me over each of them." },
+  { dim: "strategic", type: "likert", text: "I have a written plan for how I will reach my first 10 paying customers." },
+  { dim: "strategic", type: "likert", text: "I have had direct conversations with potential customers about the problem I want to solve and those conversations changed how I think about my offering." },
+  { dim: "strategic", type: "likert", text: "I can name the single biggest assumption my business depends on and I have a concrete plan to test it within the next 30 days." },
+  { dim: "strategic", type: "mc", text: "How did you identify your target market?",
+    options: [
+      { label: "Gut feeling or personal intuition", score: 1 },
+      { label: "Personal experience with the problem", score: 3 },
+      { label: "Direct conversations with potential customers", score: 5 },
+      { label: "Formal market research or data analysis", score: 4 },
+      { label: "Accidental discovery while working on something else", score: 2 }
+    ]},
+  { dim: "strategic", type: "mc", text: "What is your current level of market validation?",
+    options: [
+      { label: "I believe the market exists but have no evidence yet", score: 1 },
+      { label: "A few people have said they would pay but none have", score: 2 },
+      { label: "I have survey data or focus group feedback supporting demand", score: 3 },
+      { label: "I have letters of intent or pre-orders from potential customers", score: 4 },
+      { label: "People are already paying me for this product or service", score: 5 }
+    ]},
+  { dim: "strategic", type: "open", text: "What assumption about your market would, if proven wrong, kill your business?" },
+
+  // ── Operational Readiness (8: 5 Likert + 2 MC + 1 Open) ──
+  { dim: "operational", type: "likert", text: "I have mapped out every step from first customer contact to completed sale and I know where the bottlenecks will be." },
+  { dim: "operational", type: "likert", text: "I know exactly which tasks I must do personally and which ones I can outsource or automate from day one." },
+  { dim: "operational", type: "likert", text: "I have tested my delivery process with at least one real or simulated customer before planning to launch broadly." },
+  { dim: "operational", type: "likert", text: "I have identified a specific person or service I could hire tomorrow to handle my weakest operational area." },
+  { dim: "operational", type: "likert", text: "I have written down the three most critical repeatable tasks in my business and described how each one should be done." },
+  { dim: "operational", type: "mc", text: "How dependent is your business model on you personally?",
+    options: [
+      { label: "Entirely dependent on me for everything", score: 1 },
+      { label: "Mostly dependent on me with some informal help", score: 2 },
+      { label: "Some tasks could be delegated today", score: 3 },
+      { label: "Most tasks could run without me if needed", score: 4 },
+      { label: "Designed to operate independently from day one", score: 5 }
+    ]},
+  { dim: "operational", type: "mc", text: "What is your plan for handling customer support in the first 6 months?",
+    options: [
+      { label: "I have not thought about this yet", score: 1 },
+      { label: "I will handle everything personally", score: 2 },
+      { label: "I have a basic plan but no tools or systems set up", score: 3 },
+      { label: "I have selected tools and drafted response templates", score: 4 },
+      { label: "I have a tested support system ready to go before launch", score: 5 }
+    ]},
+  { dim: "operational", type: "open", text: "Walk me through how a customer goes from first contact to payment in your business. Where does it slow down?" },
+
+  // ── Financial Awareness (8: 5 Likert + 2 MC + 1 Open) ──
+  { dim: "financial", type: "likert", text: "I have a documented estimate of the total capital required to launch and sustain this business for the first six months." },
+  { dim: "financial", type: "likert", text: "I have calculated exactly how much I need to charge per unit to cover all costs and reach my desired profit margin." },
+  { dim: "financial", type: "likert", text: "I have a written personal budget that separates my living expenses from business expenses and I know which one pays for what." },
+  { dim: "financial", type: "likert", text: "I have estimated how many months I can survive financially if this business generates zero revenue." },
+  { dim: "financial", type: "likert", text: "I have researched the actual cost of acquiring one customer in my market and compared it to what that customer would pay me." },
+  { dim: "financial", type: "mc", text: "If you ran out of money today, how long could you continue operating?",
+    options: [
+      { label: "Less than 2 weeks", score: 1 },
+      { label: "2 to 4 weeks", score: 2 },
+      { label: "1 to 3 months", score: 3 },
+      { label: "3 to 6 months", score: 4 },
+      { label: "6+ months", score: 5 }
+    ]},
+  { dim: "financial", type: "mc", text: "What is your current understanding of your unit economics?",
+    options: [
+      { label: "I have not calculated any of this yet", score: 1 },
+      { label: "I have a rough estimate in my head", score: 2 },
+      { label: "I have a basic spreadsheet but it is not current", score: 3 },
+      { label: "I have built a detailed financial model", score: 4 },
+      { label: "I monitor unit economics regularly and adjust my pricing", score: 5 }
+    ]},
+  { dim: "financial", type: "open", text: "If an investor asked 'what is your path to profitability?' what would you actually say right now?" },
+
+  // ── Entrepreneurial Mindset (8: 5 Likert + 2 MC + 1 Open) ──
+  { dim: "mindset", type: "likert", text: "I have shared my idea with potential critics and actively looked for reasons why it might fail." },
+  { dim: "mindset", type: "likert", text: "I have written down exactly what I am giving up to pursue this venture and reviewed the list with someone I trust." },
+  { dim: "mindset", type: "likert", text: "I have identified at least two ways to test my core idea using only the resources I currently have, without waiting for outside funding." },
+  { dim: "mindset", type: "likert", text: "I have asked someone with relevant expertise to poke holes in my business idea and I changed at least one thing based on what they said." },
+  { dim: "mindset", type: "likert", text: "I can describe a specific skill I lack for this business and I have a plan to either learn it or find someone who has it." },
+  { dim: "mindset", type: "mc", text: "How do you typically respond when someone gives you negative feedback about your idea?",
+    options: [
+      { label: "I defend my vision and move on", score: 1 },
+      { label: "I listen politely but rarely change course", score: 2 },
+      { label: "I evaluate the feedback and sometimes adjust", score: 3 },
+      { label: "I actively seek criticism and adjust my approach based on it", score: 5 },
+      { label: "I have not received meaningful feedback yet", score: 1 }
+    ]},
+  { dim: "mindset", type: "mc", text: "When was the last time you paid for professional advice or coaching and actually implemented what was recommended?",
+    options: [
+      { label: "I have never paid for professional advice", score: 1 },
+      { label: "I paid for advice but did not follow through on it", score: 2 },
+      { label: "I paid for advice and partially implemented it", score: 3 },
+      { label: "I paid for advice, implemented it and saw measurable results within 90 days", score: 5 },
+      { label: "I regularly invest in coaching or mentorship and track the return on those investments", score: 5 }
+    ]},
+  { dim: "mindset", type: "open", text: "Describe one decision you delayed because you lacked expertise you could not find on your own. What happened while you waited?" },
+
+  // ── Implementation Capacity (8: 5 Likert + 2 MC + 1 Open) ──
+  { dim: "execution", type: "likert", text: "I have a clear definition of my Minimum Viable Product and know the fastest way to get it into a customer's hands." },
+  { dim: "execution", type: "likert", text: "I set weekly goals with specific deliverables and I review my completion rate honestly." },
+  { dim: "execution", type: "likert", text: "I have a specific launch date or MVP deadline that I am actively working toward right now." },
+  { dim: "execution", type: "likert", text: "I have a list of at least five people or organizations I can contact this week to help me launch or test my idea." },
+  { dim: "execution", type: "likert", text: "I have personally sold or pre-sold my product or service to at least one person who is not a friend or family member." },
+  { dim: "execution", type: "mc", text: "What is your current progress toward launching your minimum viable product?",
+    options: [
+      { label: "I am still researching and planning. Nothing built yet", score: 1 },
+      { label: "I have sketches or mockups but nothing functional", score: 2 },
+      { label: "I have a basic prototype or proof of concept", score: 3 },
+      { label: "I have a working MVP that I am testing with real users", score: 4 },
+      { label: "My MVP is live and generating revenue or user feedback", score: 5 }
+    ]},
+  { dim: "execution", type: "mc", text: "How many people outside your immediate circle have you pitched your idea to in the last 30 days?",
+    options: [
+      { label: "None", score: 1 },
+      { label: "1 to 2 people", score: 2 },
+      { label: "3 to 5 people", score: 3 },
+      { label: "6 to 10 people", score: 4 },
+      { label: "More than 10 people", score: 5 }
+    ]},
+  { dim: "execution", type: "open", text: "If a consultant gave you a 90-day action plan tomorrow, what would prevent you from executing it? Be specific." }
+];
+
+// =========================================================
+// ESTABLISHED STAGE QUESTIONS (mixed types)
+// =========================================================
+const QUESTIONS_ESTABLISHED = [
+  // ── Strategic Readiness (8: 5 Likert + 2 MC + 1 Open) ──
+  { dim: "strategic", type: "likert", text: "I have a documented strategic plan for the next 12 months that dictates my weekly and monthly priorities." },
+  { dim: "strategic", type: "likert", text: "I can articulate exactly why my last 5 customers chose me over the alternatives and I use that insight in my marketing." },
+  { dim: "strategic", type: "likert", text: "I have lost a sale to a competitor in the past year and I understand specifically what they offered that I did not." },
+  { dim: "strategic", type: "likert", text: "I have a documented process for identifying new market opportunities or revenue streams at least once per quarter." },
+  { dim: "strategic", type: "likert", text: "I know which 20% of my customers generate 80% of my revenue and I have a plan to either grow that segment or reduce the dependency." },
+  { dim: "strategic", type: "mc", text: "What is your strongest evidence for product-market fit right now?",
+    options: [
+      { label: "I am still searching for clear validation", score: 1 },
+      { label: "Customers seem excited when I pitch", score: 2 },
+      { label: "Most new customers come through word-of-mouth referrals", score: 3 },
+      { label: "I have consistent repeat purchases from existing customers", score: 4 },
+      { label: "Revenue is growing month over month without heavy discounting", score: 5 }
+    ]},
+  { dim: "strategic", type: "mc", text: "How do you currently make strategic decisions about where to invest your time and money?",
+    options: [
+      { label: "I go with my gut and adjust as I go", score: 1 },
+      { label: "I follow what competitors are doing", score: 2 },
+      { label: "I rely on a mix of data and intuition", score: 3 },
+      { label: "I use financial data and customer feedback to prioritize", score: 4 },
+      { label: "I have a formal decision framework with criteria I apply consistently", score: 5 }
+    ]},
+  { dim: "strategic", type: "open", text: "Name three specific competitors and explain one concrete way you are different from each of them." },
+
+  // ── Operational Readiness (8: 5 Likert + 2 MC + 1 Open) ──
+  { dim: "operational", type: "likert", text: "I have documented standard operating procedures for the core activities of my business that a new hire could follow on day one." },
+  { dim: "operational", type: "likert", text: "If I were unable to work for two weeks, my business would continue to function and generate revenue without me." },
+  { dim: "operational", type: "likert", text: "I can scale my product or service delivery by 3x without proportionally increasing my team size." },
+  { dim: "operational", type: "likert", text: "I have a named backup supplier or vendor for my most critical dependency and I have contacted them to confirm availability." },
+  { dim: "operational", type: "likert", text: "I have a specific person on my team who could replace me in a client meeting tomorrow and deliver a result the client would accept." },
+  { dim: "operational", type: "mc", text: "Where does your operation break most often?",
+    options: [
+      { label: "Quality inconsistency in the product or service", score: 2 },
+      { label: "Delivery delays or missed deadlines", score: 2 },
+      { label: "Customer support response time", score: 3 },
+      { label: "Inventory, supply chain or vendor issues", score: 2 },
+      { label: "Team coordination and communication", score: 2 },
+      { label: "It rarely breaks. Operations are stable", score: 5 }
+    ]},
+  { dim: "operational", type: "mc", text: "If a key team member quit with no notice tomorrow, how would your business be affected?",
+    options: [
+      { label: "It would be catastrophic. That person holds critical knowledge", score: 1 },
+      { label: "It would hurt badly. Recovery would take months", score: 2 },
+      { label: "It would be disruptive but we could manage within a few weeks", score: 3 },
+      { label: "We have enough cross-training to absorb it quickly", score: 4 },
+      { label: "We have documented processes and redundancy. Minimal disruption", score: 5 }
+    ]},
+  { dim: "operational", type: "open", text: "If your biggest client called tomorrow asking for twice the volume, could you deliver? What would break first?" },
+
+  // ── Financial Awareness (8: 5 Likert + 2 MC + 1 Open) ──
+  { dim: "financial", type: "likert", text: "I track my monthly revenue, expenses and cash flow with enough detail to identify trends before they become crises." },
+  { dim: "financial", type: "likert", text: "I can accurately predict how many months my business can survive if all revenue stopped today." },
+  { dim: "financial", type: "likert", text: "I review my pricing strategy at least twice a year based on actual cost data and competitive analysis." },
+  { dim: "financial", type: "likert", text: "I have modeled what happens to my business if my largest customer or revenue stream disappears overnight." },
+  { dim: "financial", type: "likert", text: "I know my customer lifetime value and I can explain whether it justifies what I spend to acquire each customer." },
+  { dim: "financial", type: "mc", text: "How often do you review your unit economics (cost per customer acquisition vs. lifetime value)?",
+    options: [
+      { label: "I have never calculated this", score: 1 },
+      { label: "Once or twice a year at most", score: 2 },
+      { label: "Quarterly", score: 3 },
+      { label: "Monthly", score: 4 },
+      { label: "Weekly or in real time", score: 5 }
+    ]},
+  { dim: "financial", type: "mc", text: "What is your current approach to financial forecasting?",
+    options: [
+      { label: "I do not forecast. I react to what happens", score: 1 },
+      { label: "I have a rough annual budget but do not update it", score: 2 },
+      { label: "I forecast quarterly and compare actuals to plan", score: 3 },
+      { label: "I maintain rolling forecasts and scenario models", score: 4 },
+      { label: "I use detailed models with sensitivity analysis for key variables", score: 5 }
+    ]},
+  { dim: "financial", type: "open", text: "What is one financial metric you track religiously and why does it matter most to your business?" },
+
+  // ── Entrepreneurial Mindset (8: 5 Likert + 2 MC + 1 Open) ──
+  { dim: "mindset", type: "likert", text: "I have fundamentally changed my business model, product or target market at least once based on evidence that my original approach was not working." },
+  { dim: "mindset", type: "likert", text: "I can have a difficult conversation with my team about performance or strategy without it becoming personal." },
+  { dim: "mindset", type: "likert", text: "I actively seek feedback from customers, mentors and peers even when I expect it to be critical of my current approach." },
+  { dim: "mindset", type: "likert", text: "I have made at least one high-stakes business decision in the last year with incomplete information and I am at peace with how it turned out." },
+  { dim: "mindset", type: "likert", text: "I can name a specific blind spot or weakness in my leadership that a trusted advisor has pointed out and I am actively working to address it." },
+  { dim: "mindset", type: "mc", text: "How do you approach decisions where the potential reward is high but the risk of failure is also significant?",
+    options: [
+      { label: "I avoid high-risk decisions whenever possible", score: 1 },
+      { label: "I agonize over them and often delay until the window closes", score: 2 },
+      { label: "I weigh pros and cons carefully and decide within a reasonable timeframe", score: 3 },
+      { label: "I set a decision deadline, gather what data I can and commit", score: 4 },
+      { label: "I move quickly because I know I can adjust course if it does not work", score: 5 }
+    ]},
+  { dim: "mindset", type: "mc", text: "When was the last time you implemented a recommendation from a consultant, mentor or advisor that you initially disagreed with?",
+    options: [
+      { label: "I have never worked with a consultant or advisor", score: 1 },
+      { label: "I received advice but chose to do it my way instead", score: 2 },
+      { label: "I partially implemented a recommendation but adapted it significantly", score: 3 },
+      { label: "I fully implemented a recommendation I disagreed with and it produced a measurable result", score: 5 },
+      { label: "I regularly implement external recommendations even when they challenge my instincts", score: 5 }
+    ]},
+  { dim: "mindset", type: "open", text: "Describe a time a team member or partner disagreed with you on something important. How did you resolve it and what did you learn?" },
+
+  // ── Implementation Capacity (8: 5 Likert + 2 MC + 1 Open) ──
+  { dim: "execution", type: "likert", text: "I can point to a specific example in the last 6 months where I identified a problem, implemented a fix and measured the result." },
+  { dim: "execution", type: "likert", text: "I can quickly reassign time or money to a new priority without collapsing my existing operations." },
+  { dim: "execution", type: "likert", text: "I have a system for measuring the results of every major initiative within 30 days of launch." },
+  { dim: "execution", type: "likert", text: "I have a formal system for collecting customer feedback and turning it into product improvements within 30 days." },
+  { dim: "execution", type: "likert", text: "I have closed at least one sale in the last 90 days where the buyer initially said no and I changed their mind through follow-up." },
+  { dim: "execution", type: "mc", text: "When a new opportunity or idea emerges, how do you decide whether to pursue it?",
+    options: [
+      { label: "I chase most new ideas that seem promising", score: 1 },
+      { label: "I discuss with my team and go with the consensus", score: 2 },
+      { label: "I evaluate against my current priorities before committing", score: 3 },
+      { label: "I use a formal criteria framework to assess fit and ROI", score: 4 },
+      { label: "I test small before committing resources and kill it fast if it does not work", score: 5 }
+    ]},
+  { dim: "execution", type: "mc", text: "If you hired a business consultant today, how prepared are you to brief them on your situation?",
+    options: [
+      { label: "I would not know where to start. I just know something needs to change", score: 1 },
+      { label: "I could describe my general challenges but have no supporting data", score: 2 },
+      { label: "I could provide some financials and a verbal overview of my situation", score: 3 },
+      { label: "I could share organized financials, documented processes and a clear list of priorities", score: 4 },
+      { label: "I have a documented business review ready that covers strategy, operations, finances and team", score: 5 }
+    ]},
+  { dim: "execution", type: "open", text: "If a consultant gave you a 90-day action plan tomorrow, what would prevent you from executing it? Be specific." }
+];
+
+let QUESTIONS = [];
+
+// =========================================================
+// SCREENING QUESTIONS
+// =========================================================
+const SCREENING = [
+  { key: "origin", text: "What was the primary driver behind your leap into entrepreneurship?",
+    options: [
+      { value: "opportunity", label: "<b>Market Pull</b> I left a stable path because I saw a gap in the market I could not ignore." },
+      { value: "necessity",   label: "<b>Life Push</b> I turned to entrepreneurship because I needed income or had limited alternatives." },
+      { value: "mixed",       label: "<b>Strategic Transition</b> I was looking for a change and the right door opened at the right time." }
+    ]},
+  { key: "future", text: "If a stable high-paying job offer in your field landed on your desk tomorrow, how would you react?",
+    options: [
+      { value: "builder",   label: "<b>The Builder</b> I would decline immediately because I am obsessed with the problem I am solving." },
+      { value: "realist",   label: "<b>The Realist</b> I would consider it seriously if the business was not hitting its financial milestones." },
+      { value: "reluctant founder", label: "<b>The Reluctant Founder</b> I would take it if it offered more security than my current venture." }
+    ]}
+];
+
+// =========================================================
+// MATURITY MODEL (replaces external benchmarks)
+// =========================================================
+// Grounded in: Lichtenstein & Lyons (2001). "The Entrepreneurial
+// Development System." Economic Development Quarterly, 15(1), 3-20.
+// And: Kutzhanova, Lyons & Lichtenstein (2009). "Skill-Based
+// Development of Entrepreneurs." Economic Development Quarterly, 23(3), 193-210.
+// Classification follows a 5-level competency progression model.
+//
+const MATURITY_LEVELS = [
+  { key: "advanced",   label: "Advanced",   min: 4.1, max: 5.0, color: "#1B5E20", bg: "#C8E6C9" },
+  { key: "competent",  label: "Competent",  min: 3.3, max: 4.0, color: "#2E7D32", bg: "#E8F5E9" },
+  { key: "developing", label: "Developing", min: 2.5, max: 3.2, color: "#E65100", bg: "#FFF3E0" },
+  { key: "aware",      label: "Aware",      min: 1.9, max: 2.4, color: "#BF360C", bg: "#FFCCBC" },
+  { key: "unaware",    label: "Unaware",    min: 1.0, max: 1.8, color: "#B71C1C", bg: "#FFCDD2" }
+];
+
+function getMaturityLevel(score) {
+  if (score >= 4.1) return MATURITY_LEVELS[0];
+  if (score >= 3.3) return MATURITY_LEVELS[1];
+  if (score >= 2.5) return MATURITY_LEVELS[2];
+  if (score >= 1.9) return MATURITY_LEVELS[3];
+  return MATURITY_LEVELS[4];
+}
+
+function getMaturityDescriptor(dimKey, score) {
+  const dim = DIMENSIONS.find(d => d.key === dimKey);
+  if (!dim) return "";
+  const level = getMaturityLevel(score);
+  return dim.maturity[level.key] || "";
+}
+
+
+
+// =========================================================
+// PATTERN DETECTION RULES
+// =========================================================
+const PATTERN_RULES = [
+  { id: "vision_execution_gap", label: "Strategy-Execution Gap", icon: "&#x1F3AF;",
+    test: (s) => s.strategic >= 3.5 && s.execution < 2.5, type: "gap",
+    cite: "Rauch & Frese (2007), European Journal of Work and Organizational Psychology meta-analysis",
+    desc: "Your strategic clarity is strong but execution capacity is significantly lower. Rauch and Frese's meta-analysis of 116 studies found that action-oriented traits (proactive personality, stress tolerance) predict business success more strongly than cognitive traits alone. Without execution infrastructure, strategic clarity becomes an intellectual exercise. Prioritize building execution habits and accountability structures." },
+  { id: "execution_without_direction", label: "Effectual Without Direction", icon: "&#x26A1;",
+    test: (s) => s.execution >= 3.5 && s.strategic < 2.5, type: "caution",
+    cite: "Sarasvathy (2001), Academy of Management Review",
+    desc: "You demonstrate strong action-first tendencies, which Sarasvathy's effectuation theory identifies as common in expert entrepreneurs. However, without strategic clarity, this can lead to activity without direction. Invest time in defining your value proposition and market positioning." },
+  { id: "financial_blind_spot", label: "Financial Blind Spot", icon: "&#x1F4B0;",
+    test: (s) => s.financial < 2.5 && (s.strategic >= 3.0 || s.mindset >= 3.0), type: "gap",
+    cite: "Lusardi & Mitchell (2014), Journal of Economic Literature; Zhao, Seibert & Hills (2005)",
+    desc: "Your financial awareness is significantly behind your other capabilities. Lusardi and Mitchell's research demonstrates that financial literacy directly impacts entrepreneurial decision quality. Zhao et al. found that entrepreneurial self-efficacy mediates the path from learning to entrepreneurial intent, meaning that weak financial skills undermine both confidence and action. This is a critical gap to address." },
+  { id: "strong_mindset_weak_ops", label: "Entrepreneur-Manager Disconnect", icon: "&#x1F9E0;",
+    test: (s) => s.mindset >= 3.5 && s.operational < 2.5, type: "caution",
+    cite: "Aldrich & Martinez (2001), Entrepreneurship Theory and Practice; Kutzhanova et al. (2009)",
+    desc: "Your mindset is strong but operational readiness lags. Aldrich and Martinez found that entrepreneurial success depends on organizing processes as much as opportunity recognition. The RISE framework identifies operational skills as a separate competency domain that requires deliberate development independent of mindset. Build basic processes before scaling your ambition." },
+  { id: "balanced_high", label: "Balanced and Strong Profile", icon: "&#x2B50;",
+    test: (s) => { const v = Object.values(s); return v.every(x => x >= 3.5) && (Math.max(...v) - Math.min(...v)) < 1.5; },
+    type: "strength", cite: "Lumpkin & Dess (1996), Academy of Management Review",
+    desc: "Your readiness profile is both strong and balanced. Research on entrepreneurial orientation argues that these dimensions interact, meaning strength across multiple areas creates a more resilient foundation than excellence in any single dimension. This is the ideal foundation for a consulting engagement." },
+  { id: "balanced_moderate", label: "Evenly Moderate Profile", icon: "&#x2696;&#xFE0F;",
+    test: (s) => { const v = Object.values(s); const a = v.reduce((x,y) => x+y,0)/v.length; return a >= 2.5 && a < 3.5 && (Math.max(...v) - Math.min(...v)) < 1.0; },
+    type: "insight", cite: "Bandura (1997), Self-Efficacy: The Exercise of Control; Lumpkin & Dess (1996)",
+    desc: "Your scores are evenly distributed in the moderate range. Self-efficacy research suggests that concentrated improvement in one domain builds confidence that transfers to other domains. Pick your weakest dimension and concentrate there." },
+  { id: "uniformly_low", label: "Foundational Gaps Across Dimensions", icon: "&#x1F6A7;",
+    test: (s) => { return Object.values(s).filter(v => v < 2.5).length >= 4; },
+    type: "gap", cite: "Kutzhanova, Lyons & Lichtenstein (2009)",
+    desc: "Multiple dimensions score below readiness thresholds. The RISE framework emphasizes skill-based development over business-plan-centric approaches for early-stage entrepreneurs. Consider mentorship or structured learning before formal consulting." },
+  { id: "ops_financial_strength", label: "Strong Implementation Infrastructure", icon: "&#x1F4CA;",
+    test: (s) => s.operational >= 3.5 && s.financial >= 3.5, type: "strength",
+    cite: "Lyons et al. (2019), RISE Framework",
+    desc: "Your operational and financial foundations are strong. These are the two dimensions most critical for implementing consulting recommendations. Focus consulting on strategy and market expansion." },
+  { id: "high_variance", label: "Highly Uneven Readiness", icon: "&#x1F4C9;",
+    test: (s) => { const v = Object.values(s); return (Math.max(...v) - Math.min(...v)) >= 2.5; },
+    type: "caution", cite: "Lumpkin & Dess (1996), Academy of Management Review",
+    desc: "Large gap between your strongest and weakest dimensions. Research argues that entrepreneurial orientation dimensions interact, meaning your weakest area creates a performance bottleneck that constrains the value of your strengths. Address the gap before scaling." },
+  { id: "resilient_resourceful", label: "High Self-Efficacy Founder", icon: "&#x1F4AA;",
+    test: (s) => s.mindset >= 4.0 && s.execution >= 3.5, type: "strength",
+    cite: "Chen, Greene & Crick (1998), Journal of Business Venturing",
+    desc: "Your mindset and execution scores indicate high entrepreneurial self-efficacy. Research demonstrated that ESE is the strongest distinguisher between entrepreneurs and managers. This combination of confidence and action capacity correlates with long-term success." }
+];
+
+const DIM_COLORS = { high: "#2E7D32", mod: "#E65100", low: "#C62828" };
+
+// =========================================================
+// STATE
+// =========================================================
+const state = {
+  user: { name: "", business: "", stage: "", region: "" },
+  screening: {},
+  answers: [],
+  index: 0,
+  totalSteps: 42
+};
+
+// =========================================================
+// PROGRESS SAVING (localStorage)
+// =========================================================
+const SAVE_KEY = "assessment_progress_v2";
+
+function saveProgress() {
+  try {
+    const data = {
+      user: state.user,
+      screening: state.screening,
+      answers: state.answers,
+      index: state.index,
+      totalSteps: state.totalSteps,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+  } catch (e) { /* localStorage unavailable */ }
+}
+
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return null;
+    const data = JSON.parse(raw);
+    // Expire after 24 hours
+    if (Date.now() - data.timestamp > 24 * 60 * 60 * 1000) {
+      localStorage.removeItem(SAVE_KEY);
+      return null;
+    }
+    return data;
+  } catch (e) { return null; }
+}
+
+function clearProgress() {
+  try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
+}
+
+// =========================================================
+// HELPERS
+// =========================================================
+const $ = id => document.getElementById(id);
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  $(id).classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function classify(score) {
+  if (score >= 3.3) return "high";
+  if (score >= 2.5) return "mod";
+  return "low";
+}
+function classifyOverall(score) {
+  const m = getMaturityLevel(score);
+  if (score >= 4.1) return { key: "high", label: "Advanced readiness", cls: "cls-high" };
+  if (score >= 3.3) return { key: "high", label: "Competent readiness", cls: "cls-high" };
+  if (score >= 2.5) return { key: "mod",  label: "Developing readiness", cls: "cls-mod" };
+  if (score >= 1.9) return { key: "mod",  label: "Aware but not ready", cls: "cls-mod" };
+  return { key: "low", label: "Foundational gaps", cls: "cls-low" };
+}
+function classifyLabel(score) {
+  return getMaturityLevel(score).label;
+}
+function dimScore(dimKey) {
+  const qs = QUESTIONS.map((q, i) => ({ q, i })).filter(x => x.q.dim === dimKey && x.q.type !== "open");
+  const vals = qs.map(x => state.answers[x.i]).filter(v => v !== null && typeof v === "number");
+  if (!vals.length) return 0;
+  return vals.reduce((a, b) => a + b, 0) / vals.length;
+}
+
+// =========================================================
+// INTAKE
+// =========================================================
+$("start-btn").addEventListener("click", () => {
+  const name = $("user-name").value.trim();
+  const business = $("user-business").value.trim();
+  const stage = $("user-stage").value;
+  const region = $("user-region").value;
+  if (!name) { alert("Please enter your name."); return; }
+  if (!stage) { alert("Please select your business stage."); return; }
+
+  QUESTIONS = (stage === "idea") ? QUESTIONS_IDEA : QUESTIONS_ESTABLISHED;
+
+  state.user = { name, business, stage, region };
+  state.screening = {};
+  state.answers = new Array(QUESTIONS.length).fill(null);
+  state.totalSteps = SCREENING.length + QUESTIONS.length;
+  state.index = 0;
+  saveProgress();
+  renderStep();
+  showScreen("screen-questions");
+});
+
+// Check for saved progress on page load
+(function checkSavedProgress() {
+  const saved = loadProgress();
+  if (!saved || !saved.user || !saved.user.stage) return;
+  const answeredCount = saved.answers.filter(a => a !== null).length;
+  if (answeredCount === 0) return;
+  const resume = confirm(`You have a saved assessment in progress (${answeredCount} questions answered as ${saved.user.name}). Would you like to resume?`);
+  if (!resume) { clearProgress(); return; }
+  QUESTIONS = (saved.user.stage === "idea") ? QUESTIONS_IDEA : QUESTIONS_ESTABLISHED;
+  state.user = saved.user;
+  state.screening = saved.screening || {};
+  state.answers = saved.answers;
+  state.totalSteps = saved.totalSteps;
+  state.index = saved.index;
+  renderStep();
+  showScreen("screen-questions");
+})();
+
+// =========================================================
+// QUESTION FLOW
+// =========================================================
+function renderStep() {
+  const idx = state.index;
+  const total = state.totalSteps;
+  $("progress-label").textContent = `Question ${idx + 1} of ${total}`;
+  const pct = Math.round(((idx + 1) / total) * 100);
+  $("progress-percent").textContent = `${pct}%`;
+  $("progress-bar").style.width = `${pct}%`;
+  $("back-btn").disabled = idx === 0;
+
+  // Hide all blocks
+  $("likert-block").style.display = "none";
+  $("yesno-block").style.display = "none";
+  $("mc-block").style.display = "none";
+  $("open-block").style.display = "none";
+  $("screening-block").style.display = "none";
+  $("question-type-badge-wrap").innerHTML = "";
+
+  if (idx < SCREENING.length) {
+    // Screening question
+    const sq = SCREENING[idx];
+    $("category-tag").textContent = "About You";
+    $("question-text").textContent = sq.text;
+    $("screening-block").style.display = "block";
+    const opts = $("screening-options");
+    opts.innerHTML = "";
+    sq.options.forEach((opt, i) => {
+      const id = `screen-opt-${idx}-${i}`;
+      const checked = state.screening[sq.key] === opt.value;
+      opts.insertAdjacentHTML("beforeend", `
+        <input type="radio" name="screen-answer" id="${id}" value="${opt.value}" ${checked ? "checked" : ""}/>
+        <label for="${id}" style="text-align:left;padding:14px 16px;">${opt.label}</label>
+      `);
+    });
+    opts.querySelectorAll('input[name="screen-answer"]').forEach(inp => {
+      inp.addEventListener("change", () => {
+        state.screening[sq.key] = inp.value;
+        $("next-btn").disabled = false;
+      });
+    });
+    $("next-btn").disabled = !state.screening[sq.key];
+    $("next-btn").textContent = idx === total - 1 ? "See results" : "Next";
+  } else {
+    const qIdx = idx - SCREENING.length;
+    const q = QUESTIONS[qIdx];
+    const dim = DIMENSIONS.find(d => d.key === q.dim);
+    $("category-tag").textContent = dim.label;
+    $("question-text").textContent = q.text;
+
+    const typeLabels = { likert: "Rate 1-5", yesno: "Yes or No", mc: "Choose one", open: "Your thoughts" };
+    $("question-type-badge-wrap").innerHTML = `<span class="question-type-badge">${typeLabels[q.type]}</span>`;
+
+    if (q.type === "likert") {
+      $("likert-block").style.display = "block";
+      document.querySelectorAll('input[name="answer"]').forEach(inp => { inp.checked = false; });
+      if (state.answers[qIdx] !== null && typeof state.answers[qIdx] === "number") {
+        const sel = document.querySelector(`input[name="answer"][value="${state.answers[qIdx]}"]`);
+        if (sel) sel.checked = true;
+      }
+      document.querySelectorAll('input[name="answer"]').forEach(inp => {
+        inp.onchange = () => {
+          state.answers[qIdx] = parseInt(inp.value, 10);
+          $("next-btn").disabled = false;
+        };
+      });
+      $("next-btn").disabled = state.answers[qIdx] === null;
+
+    } else if (q.type === "yesno") {
+      $("yesno-block").style.display = "block";
+      const yesBtn = $("yn-yes");
+      const noBtn = $("yn-no");
+      const yesScore = q.reverse ? 1 : 5;
+      const noScore = q.reverse ? 5 : 1;
+      yesBtn.classList.remove("selected");
+      noBtn.classList.remove("selected");
+      if (state.answers[qIdx] === yesScore) yesBtn.classList.add("selected");
+      if (state.answers[qIdx] === noScore) noBtn.classList.add("selected");
+      yesBtn.onclick = () => {
+        state.answers[qIdx] = yesScore;
+        yesBtn.classList.add("selected");
+        noBtn.classList.remove("selected");
+        $("next-btn").disabled = false;
+      };
+      noBtn.onclick = () => {
+        state.answers[qIdx] = noScore;
+        noBtn.classList.add("selected");
+        yesBtn.classList.remove("selected");
+        $("next-btn").disabled = false;
+      };
+      $("next-btn").disabled = state.answers[qIdx] === null;
+
+    } else if (q.type === "mc") {
+      $("mc-block").style.display = "block";
+      const mcOpts = $("mc-options");
+      mcOpts.innerHTML = "";
+      q.options.forEach((opt, i) => {
+        const id = `mc-opt-${qIdx}-${i}`;
+        const checked = state.answers[qIdx] === opt.score;
+        mcOpts.insertAdjacentHTML("beforeend", `
+          <input type="radio" name="mc-answer" id="${id}" value="${opt.score}" ${checked ? "checked" : ""}/>
+          <label for="${id}">${opt.label}</label>
+        `);
+      });
+      mcOpts.querySelectorAll('input[name="mc-answer"]').forEach(inp => {
+        inp.addEventListener("change", () => {
+          state.answers[qIdx] = parseInt(inp.value, 10);
+          $("next-btn").disabled = false;
+        });
+      });
+      $("next-btn").disabled = state.answers[qIdx] === null;
+
+    } else if (q.type === "open") {
+      $("open-block").style.display = "block";
+      const ta = $("open-answer");
+      ta.value = (typeof state.answers[qIdx] === "string") ? state.answers[qIdx] : "";
+      ta.oninput = () => { state.answers[qIdx] = ta.value; };
+      $("next-btn").disabled = false; // open-ended is optional
+    }
+
+    $("next-btn").textContent = idx === total - 1 ? "See results" : "Next";
+  }
+}
+
+$("next-btn").addEventListener("click", () => {
+  if (state.index < state.totalSteps - 1) {
+    state.index += 1;
+    saveProgress();
+    renderStep();
+  } else {
+    clearProgress();
+    renderResults();
+    showScreen("screen-results");
+  }
+});
+$("back-btn").addEventListener("click", () => {
+  if (state.index > 0) { state.index -= 1; saveProgress(); renderStep(); }
+});
+
+// =========================================================
+// RESULTS
+// =========================================================
+let radarChartInstance = null;
+let gaugeChartInstance = null;
+let barChartInstance = null;
+
+function renderResults() {
+  const scores = DIMENSIONS.map(d => ({ dim: d, score: dimScore(d.key) }));
+  const overall = scores.reduce((a, s) => a + s.score, 0) / scores.length;
+  const overallCls = classifyOverall(overall);
+  const overallMaturity = getMaturityLevel(overall);
+  const sorted = [...scores].sort((a, b) => b.score - a.score);
+  const strongest = sorted[0];
+  const weakest = sorted[sorted.length - 1];
+  const gaps = [...scores].sort((a, b) => a.score - b.score).slice(0, 2);
+  const strengths = sorted.slice(0, 3).filter(s => s.score >= 3.3);
+
+  // Header
+  $("result-name").textContent = state.user.name ? `${state.user.name}'s Score` : "Your Score";
+  const pill = $("classification-pill");
+  pill.textContent = overallCls.label;
+  pill.className = `classification-pill ${overallCls.cls}`;
+
+  // Gauge chart
+  $("gauge-val").textContent = overall.toFixed(1);
+  const gaugeColor = overall >= 3.5 ? "#2E7D32" : overall >= 2.5 ? "#E65100" : "#C62828";
+  if (gaugeChartInstance) gaugeChartInstance.destroy();
+  gaugeChartInstance = new Chart($("gauge-chart").getContext("2d"), {
+    type: "doughnut",
+    data: {
+      datasets: [{ data: [overall, 5 - overall], backgroundColor: [gaugeColor, "#E8E2D9"], borderWidth: 0 }]
+    },
+    options: {
+      cutout: "75%", responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { display: false }, tooltip: { enabled: false } },
+      rotation: -90, circumference: 360
+    }
+  });
+
+  // Gauge stats
+  const spread = strongest.score - weakest.score;
+  $("gauge-details").innerHTML = `
+    <div class="gauge-stat"><span class="gauge-stat-label">Overall score</span><span class="gauge-stat-val">${overall.toFixed(1)} / 5</span></div>
+    <div class="gauge-stat"><span class="gauge-stat-label">Maturity level</span><span class="gauge-stat-val" style="color:${overallMaturity.color}">${overallMaturity.label}</span></div>
+    <div class="gauge-stat"><span class="gauge-stat-label">Strongest</span><span class="gauge-stat-val">${strongest.dim.label.split(" ")[0]} (${strongest.score.toFixed(1)})</span></div>
+    <div class="gauge-stat"><span class="gauge-stat-label">Weakest</span><span class="gauge-stat-val">${weakest.dim.label.split(" ")[0]} (${weakest.score.toFixed(1)})</span></div>
+    <div class="gauge-stat"><span class="gauge-stat-label">Spread</span><span class="gauge-stat-val" style="color:${spread >= 2.0 ? '#C62828' : spread >= 1.0 ? '#E65100' : '#2E7D32'}">${spread.toFixed(1)}</span></div>
+    <div class="gauge-stat"><span class="gauge-stat-label">Scored</span><span class="gauge-stat-val">${QUESTIONS.filter(q => q.type !== "open").length} questions</span></div>
+  `;
+
+  // Radar chart
+  if (radarChartInstance) radarChartInstance.destroy();
+  const radarLabels = scores.map(s => s.dim.label);
+  const radarData = scores.map(s => parseFloat(s.score.toFixed(2)));
+  const pointColors = scores.map(s => getMaturityLevel(s.score).color);
+
+  radarChartInstance = new Chart($("radar-chart").getContext("2d"), {
+    type: "radar",
+    data: {
+      labels: radarLabels,
+      datasets: [
+        { label: "Your Score", data: radarData, backgroundColor: "rgba(130,171,227,0.22)", borderColor: "#82ABE3", borderWidth: 2, pointBackgroundColor: pointColors, pointBorderColor: "#fff", pointBorderWidth: 2, pointRadius: 6, pointHoverRadius: 8 },
+        { label: "Competent threshold (3.3)", data: [3.3,3.3,3.3,3.3,3.3], backgroundColor: "rgba(46,125,50,0.04)", borderColor: "#2E7D32", borderWidth: 1, borderDash: [6, 4], pointBackgroundColor: "transparent", pointBorderColor: "transparent", pointRadius: 0 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { position: "bottom", labels: { font: { family: "DM Sans", size: 12 } } }, tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.r.toFixed(1)} / 5` } } },
+      scales: { r: { min: 0, max: 5, ticks: { stepSize: 1, backdropColor: "transparent", color: "#999", font: { size: 11 } }, grid: { color: "#E8E2D9" }, angleLines: { color: "#E8E2D9" }, pointLabels: { color: "#1a1a1a", font: { family: "DM Sans", size: 12, weight: "500" } } } }
+    }
+  });
+
+  // Maturity level cards
+  const benchBody = $("benchmark-body");
+  benchBody.innerHTML = scores.map(s => {
+    const m = getMaturityLevel(s.score);
+    const desc = getMaturityDescriptor(s.dim.key, s.score);
+    const yourW = (s.score / 5 * 100).toFixed(1);
+    return `
+      <div style="padding:14px 0;border-bottom:1px solid #F0EDE6;">
+        <div style="display:flex;align-items:center;gap:10px;justify-content:flex-start;">
+          <div style="font-size:14px;font-weight:600;color:#1a1a1a;text-align:left;">${s.dim.label}</div>
+          <div style="font-weight:700;font-size:16px;color:${m.color};">${s.score.toFixed(1)}</div>
+          <span class="percentile-tag" style="background:${m.bg};color:${m.color};">${m.label}</span>
+        </div>
+        <div style="font-size:12px;color:#666;line-height:1.5;margin-top:6px;text-align:left;">${desc}</div>
+      </div>
+    `;
+  }).join("");
+  $("reference-citation").textContent = `Maturity model: Lichtenstein & Lyons (2001), Kutzhanova et al. (2009). 5-level competency progression.`;
+
+  // Consulting Readiness Recommendation (enhanced with coachability)
+  const rec = buildRecommendation(overallCls.key, gaps, strengths, state.screening);
+  $("rec-headline").textContent = rec.headline;
+  $("rec-body").textContent = rec.body;
+
+  // Coachability insight from consulting-readiness questions
+  const coachabilityInsight = buildCoachabilityInsight();
+  $("coachability-insight").innerHTML = coachabilityInsight;
+
+  // Pattern detection (top 3 on main page)
+  const scoreMap = {};
+  scores.forEach(s => { scoreMap[s.dim.key] = s.score; });
+  const matched = PATTERN_RULES.filter(p => p.test(scoreMap));
+  const topPatterns = matched.slice(0, 3);
+  $("patterns-list").innerHTML = topPatterns.length
+    ? topPatterns.map(p => `<div class="pattern-card"><div class="pattern-icon">${p.icon}</div><div class="pattern-label">${p.label}</div><div class="pattern-desc">${p.desc}</div><div style="margin-top:6px;font-size:11px;color:#999;font-style:italic;">Source: ${p.cite}</div><span class="pattern-tag ${p.type}">${p.type}</span></div>`).join("")
+    : `<div class="note-box">No strong diagnostic patterns detected. Your readiness is relatively balanced across dimensions.</div>`;
+
+  // Answer-specific insights (the exact questions that dragged dimensions down)
+  $("specific-gaps-list").innerHTML = buildSpecificGapInsights(scores);
+
+  // Structured action plan (This Week / This Month / This Quarter)
+  $("action-plan-body").innerHTML = buildActionPlan(gaps, strengths, weakest, overallCls.key);
+
+  // Environmental context (only if region selected)
+  const envHtml = buildEnvironmentalContext(scores, state.user.region);
+  if (envHtml) {
+    $("env-context-body").innerHTML = envHtml;
+    $("env-context-section").style.display = "block";
+  }
+
+  // Open-ended reflections
+  const openQs = QUESTIONS.map((q, i) => ({ q, i })).filter(x => x.q.type === "open");
+  const answered = openQs.filter(x => state.answers[x.i] && typeof state.answers[x.i] === "string" && state.answers[x.i].trim().length > 0);
+  if (answered.length > 0) {
+    $("reflections-section").innerHTML = `
+      <div class="section-title">Your Reflections</div>
+      <div class="list-block">
+        ${answered.map(x => `<div class="reflection-item"><div class="reflection-q">${x.q.text}</div><div class="reflection-a">"${state.answers[x.i].trim()}"</div></div>`).join("")}
+      </div>
+    `;
+  } else {
+    $("reflections-section").innerHTML = "";
+  }
+
+  // Service Recommendation
+  const SERVICES = [
+    {
+      id: "clarity",
+      name: "Founder Clarity Sprint",
+      duration: "5-8 days",
+      desc: "A focused advisory engagement to help you evaluate your business idea, test assumptions and make informed decisions before committing further resources.",
+      forWhom: "Early-stage founders, aspiring entrepreneurs and individuals exploring startup ideas",
+      youGet: "Strategic clarity and reduced uncertainty",
+      color: "#82ABE3"
+    },
+    {
+      id: "execution",
+      name: "Execution Reset Advisory",
+      duration: "6-week engagement",
+      desc: "A structured advisory service that helps you organize execution priorities, reduce operational chaos and implement clearer execution systems.",
+      forWhom: "Founders struggling with prioritization and entrepreneurs overwhelmed by execution complexity",
+      youGet: "Organized execution and strategic focus",
+      color: "#2E7D32"
+    },
+    {
+      id: "bizplan",
+      name: "Business Plan & Strategy Package",
+      duration: "2-4 weeks",
+      desc: "Development of a structured business plan supported by market analysis, strategic positioning, financial projections and actionable metrics.",
+      forWhom: "Startups seeking funding, founders applying for grants or incubators",
+      youGet: "Strategic direction and external credibility",
+      color: "#E65100"
+    },
+    {
+      id: "growth",
+      name: "Strategic Growth Partnership",
+      duration: "3 months",
+      desc: "A high-touch strategic advisory partnership supporting you in scaling decisions, operational alignment and long-term venture growth.",
+      forWhom: "Growth-stage founders, startups with traction and founders managing expansion or scaling challenges",
+      youGet: "A strategic thinking partner for growth decisions",
+      color: "#1565C0"
+    }
+  ];
+
+  function pickServices(stage, overallKey, scoreMap, gapLabels) {
+    var primary = null;
+    var secondary = null;
+    var reason = "";
+    var gapKeys = gapLabels.map(function(g) { return g.dim ? g.dim.key : ""; });
+
+    if (stage === "idea" || (overallKey === "low" && (stage === "idea" || stage === "early"))) {
+      primary = SERVICES[0];
+      reason = "Your profile suggests you are at an early exploration phase. The Clarity Sprint will help you validate your direction and build confidence before deeper commitments.";
+      if (scoreMap.financial < 3.0 || scoreMap.strategic < 3.0) {
+        secondary = SERVICES[2];
+      }
+    } else if ((stage === "early" || stage === "growing") && (scoreMap.operational < 3.0 || scoreMap.implementation < 3.0)) {
+      primary = SERVICES[1];
+      reason = "Your operational and implementation scores indicate execution challenges. The Execution Reset will give you structure and prioritization systems to move forward efficiently.";
+      if (stage === "growing" && overallKey === "high") {
+        secondary = SERVICES[3];
+      } else if (scoreMap.financial < 3.0) {
+        secondary = SERVICES[2];
+      }
+    } else if ((stage === "early") && (scoreMap.financial < 3.0 || scoreMap.strategic < 3.0)) {
+      primary = SERVICES[2];
+      reason = "Your strategic and financial readiness scores suggest you would benefit from structured planning. This package will give you the documentation and positioning needed to attract resources.";
+      secondary = SERVICES[0];
+    } else if ((stage === "growing" || stage === "established") && overallKey !== "low") {
+      primary = SERVICES[3];
+      reason = "Your readiness profile shows a solid foundation. At your stage, a strategic advisory partnership will help you make confident scaling decisions and sustain growth.";
+      if (scoreMap.operational < 3.3 || scoreMap.implementation < 3.3) {
+        secondary = SERVICES[1];
+      }
+    } else if (overallKey === "high") {
+      primary = SERVICES[3];
+      reason = "Your high readiness scores across dimensions make you well-suited for a strategic partnership focused on growth and scaling.";
+    } else if (overallKey === "mod") {
+      primary = SERVICES[1];
+      reason = "Your moderate readiness with some dimension gaps suggests a structured advisory engagement to build stronger execution foundations.";
+      secondary = SERVICES[2];
+    } else {
+      primary = SERVICES[0];
+      reason = "The Clarity Sprint is your best starting point. It will help you assess your direction and build the foundations needed for the next phase.";
+    }
+
+    return { primary: primary, secondary: secondary, reason: reason };
+  }
+
+  var svcRec = pickServices(state.user.stage, overallCls.key, scoreMap, gaps);
+  if (svcRec.primary) {
+    var html = '<div style="border:2px solid ' + svcRec.primary.color + ';border-radius:12px;padding:24px;background:#FDFCFA;">';
+    html += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;"><span style="background:' + svcRec.primary.color + ';color:#fff;padding:4px 12px;border-radius:6px;font-size:12px;font-weight:600;">Best Match</span><span style="font-size:13px;color:#666;">' + svcRec.primary.duration + '</span></div>';
+    html += '<h3 style="font-family:Playfair Display,serif;font-size:20px;margin:0 0 8px 0;color:#1a1a1a;">' + svcRec.primary.name + '</h3>';
+    html += '<p style="font-size:14px;color:#444;line-height:1.6;margin:0 0 12px 0;">' + svcRec.primary.desc + '</p>';
+    html += '<p style="font-size:13px;color:#666;line-height:1.5;margin:0 0 8px 0;"><strong>What you get:</strong> ' + svcRec.primary.youGet + '</p>';
+    html += '<div style="background:#F0F4FA;border-radius:8px;padding:14px;margin-top:12px;"><p style="font-size:13px;color:#444;line-height:1.5;margin:0;font-style:italic;">' + svcRec.reason + '</p></div>';
+    html += '</div>';
+    $("service-rec-content").innerHTML = html;
+
+    if (svcRec.secondary) {
+      var alt = '<div style="font-size:12px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Also worth considering</div>';
+      alt += '<div style="border:1px solid #E8E4DE;border-radius:10px;padding:16px;display:flex;align-items:flex-start;gap:14px;">';
+      alt += '<div style="width:4px;min-height:40px;background:' + svcRec.secondary.color + ';border-radius:2px;flex-shrink:0;margin-top:2px;"></div>';
+      alt += '<div><div style="font-weight:600;font-size:14px;color:#1a1a1a;">' + svcRec.secondary.name + ' <span style="font-weight:400;color:#999;font-size:12px;">(' + svcRec.secondary.duration + ')</span></div>';
+      alt += '<div style="font-size:13px;color:#666;line-height:1.5;margin-top:4px;">' + svcRec.secondary.desc + '</div></div></div>';
+      $("service-rec-alt").innerHTML = alt;
+    }
+    $("service-rec-card").style.display = "block";
+  }
+
+  // CTA
+  const ctaMap = {
+    high: { tag: "Ready to engage", headline: "Book a discovery call with Manisha Mozumder.", sub: "Your profile shows you are ready for targeted consulting. Send your full readiness summary and request a 30-minute discovery call." },
+    mod: { tag: "Close to ready", headline: "Get a focused plan from Manisha Mozumder.", sub: "You are close. Send your readiness summary and Manisha will reply with a focused plan to close your priority gaps before a full engagement." },
+    low: { tag: "Build foundations first", headline: "Get foundational guidance from Manisha Mozumder.", sub: "Your readiness suggests foundational work first. Send your summary and Manisha will reply with pre-consulting resources tailored to your gaps." }
+  };
+  const cta = ctaMap[overallCls.key];
+  $("cta-tag").textContent = cta.tag;
+  $("cta-headline").textContent = cta.headline;
+  $("cta-subtitle").textContent = cta.sub;
+
+  window._reportData = { overall, overallCls, scores, strengths, gaps, rec, coachabilityInsight };
+
+  // Deep dive panels
+  renderDeepDivePatterns(scores, scoreMap, matched);
+  renderStructuredDimensions(scores);
+
+  // Submit results to backend (fire and forget)
+  try {
+    const openQs = QUESTIONS.map((q, i) => ({ q, i })).filter(x => x.q.type === "open");
+    const reflData = openQs
+      .filter(x => state.answers[x.i] && typeof state.answers[x.i] === "string" && state.answers[x.i].trim().length > 0)
+      .map(x => ({ question: x.q.text, answer: state.answers[x.i].trim() }));
+    const envRegion = state.user.region && ENV_DATA[state.user.region] ? ENV_DATA[state.user.region] : null;
+    const submitData = {
+      name: state.user.name,
+      business: state.user.business || "",
+      stage: state.user.stage || "",
+      region: state.user.region || "",
+      overall_score: overall,
+      maturity_label: getMaturityLevel(overall).label,
+      dimension_scores: scores.map(s => ({ label: s.dim.label, key: s.dim.key, score: s.score, maturity: getMaturityLevel(s.score).label })),
+      patterns: matched.map(m => m.label),
+      strengths: strengths.map(s => ({ label: s.dim.label, score: s.score })),
+      gaps: gaps.map(s => ({ label: s.dim.label, score: s.score })),
+      action_steps: rec.steps,
+      reflections: reflData,
+      coachability_insight: coachabilityInsight || "",
+      consulting_headline: rec.headline,
+      consulting_body: rec.body,
+      environment_label: envRegion ? envRegion.label : "",
+      environment_conditions: envRegion ? envRegion.conditions : [],
+      raw_answers: state.answers,
+    };
+    const BACKEND_URL = window.__BACKEND_URL || "";
+    if (BACKEND_URL) {
+      fetch(BACKEND_URL + "/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submitData)
+      }).catch(function() {});
+    }
+  } catch(e) { console.error("Submit error:", e); }
+}
+
+// =========================================================
+// COACHABILITY INSIGHT (unique to this tool)
+// Weinberg & Hausfeld (2024) found coaching readiness
+// predicts learning and performance outcomes.
+// =========================================================
+function getCoachabilityLevel() {
+  const coachQs = QUESTIONS.map((q, i) => ({ q, i })).filter(x =>
+    x.q.type === "mc" && (
+      x.q.text.toLowerCase().includes("professional advice") ||
+      x.q.text.toLowerCase().includes("consultant") ||
+      x.q.text.toLowerCase().includes("recommendation") ||
+      x.q.text.toLowerCase().includes("90-day action plan")
+    )
+  );
+  if (coachQs.length === 0) return { level: "unknown", avg: 0, lowestQ: null };
+  const coachScores = coachQs.map(x => state.answers[x.i]).filter(v => typeof v === "number");
+  if (coachScores.length === 0) return { level: "unknown", avg: 0, lowestQ: null };
+  const avg = coachScores.reduce((a, b) => a + b, 0) / coachScores.length;
+  const lowestQ = coachQs.reduce((low, x) => {
+    const s = state.answers[x.i];
+    return (typeof s === "number" && (low === null || s < state.answers[low.i])) ? x : low;
+  }, null);
+  const level = avg >= 4.0 ? "high" : avg >= 2.5 ? "mixed" : "low";
+  return { level, avg, lowestQ };
+}
+
+function buildCoachabilityInsight() {
+  const c = getCoachabilityLevel();
+  if (c.level === "unknown") return "";
+  let insight = "";
+  if (c.level === "high") {
+    insight = `<strong>High coachability signal.</strong> Your answers indicate you have experience implementing professional advice and seeing results. You are likely to extract strong value from a consulting engagement. <span style="font-size:11px;color:#999;">(Coachability avg: ${c.avg.toFixed(1)}/5. Based on your responses to consulting-readiness questions unique to this tool.)</span>`;
+  } else if (c.level === "mixed") {
+    insight = `<strong>Mixed coachability signal.</strong> You have some experience with professional guidance but your follow-through varies. A consulting engagement will work best with built-in accountability checkpoints.`;
+    if (c.lowestQ) {
+      insight += ` <span style="font-size:11px;color:#999;">Your lowest consulting-readiness response: "${c.lowestQ.q.text.substring(0, 80)}..." (${state.answers[c.lowestQ.i]}/5)</span>`;
+    }
+  } else {
+    insight = `<strong>Low coachability signal.</strong> Your responses suggest limited experience implementing professional advice. Before investing in consulting, consider whether you are ready to commit to following through on recommendations you receive.`;
+    if (c.lowestQ) {
+      insight += ` <span style="font-size:11px;color:#999;">Flagged response: "${c.lowestQ.q.text.substring(0, 80)}..." (${state.answers[c.lowestQ.i]}/5)</span>`;
+    }
+  }
+  return insight;
+}
+
+// =========================================================
+// ANSWER-SPECIFIC GAP INSIGHTS
+// =========================================================
+function buildSpecificGapInsights(scores) {
+  const allScoredQs = QUESTIONS.map((q, i) => ({ q, i })).filter(x => x.q.type !== "open");
+  const lowAnswers = allScoredQs
+    .filter(x => typeof state.answers[x.i] === "number" && state.answers[x.i] <= 2)
+    .sort((a, b) => state.answers[a.i] - state.answers[b.i]);
+
+  if (lowAnswers.length === 0) {
+    return `<div class="note-box">No individual answers scored at 2 or below. Your responses are consistently moderate to strong across all questions.</div>`;
+  }
+
+  const topGaps = lowAnswers.slice(0, 5);
+  return `<div style="font-size:13px;color:#666;margin-bottom:12px;line-height:1.5;">These are the specific questions where you scored lowest. Each one represents a concrete gap a consultant could help you address. Research on deliberate practice (Ericsson et al., 1993) shows that targeted improvement on specific weak points produces faster development than general skill-building.</div>` +
+    topGaps.map(x => {
+      const dim = DIMENSIONS.find(d => d.key === x.q.dim);
+      const score = state.answers[x.i];
+      const scoreColor = score === 1 ? "#C62828" : "#E65100";
+      return `<div style="padding:12px 0;border-bottom:1px solid #F0EDE6;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+          <div style="flex:1;">
+            <div style="font-size:11px;color:#82ABE3;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;margin-bottom:4px;">${dim ? dim.label : ""}</div>
+            <div style="font-size:13px;color:#1a1a1a;line-height:1.5;">${x.q.text}</div>
+          </div>
+          <div style="font-size:18px;font-weight:700;color:${scoreColor};min-width:32px;text-align:right;">${score}/5</div>
+        </div>
+      </div>`;
+    }).join("");
+}
+
+// =========================================================
+// STRUCTURED ACTION PLAN
+// =========================================================
+function buildActionPlan(gaps, strengths, weakest, levelKey) {
+  const weakDim = weakest.dim.key;
+  const weekActions = {
+    strategic: "Write a one-page strategic clarity document answering: Who do I serve? What problem do I solve? Why would they choose me over alternatives?",
+    operational: "Map your current workflow from customer inquiry to delivery. Identify the step that depends most on you personally being present.",
+    financial: "Calculate three numbers: your monthly fixed costs, your average revenue per customer and how many months you can operate without new income.",
+    mindset: "Write down the one decision you have been avoiding for the longest. Set a deadline to make it within 7 days.",
+    execution: "Identify one task you have been planning for more than 2 weeks. Complete it today or decide to cut it permanently."
+  };
+
+  const monthActions = {
+    strategic: "Conduct 5 conversations with potential customers. Ask what problem they are trying to solve and what alternatives they have already tried. Revise your value proposition based on what you learn.",
+    operational: "Document the three processes most critical to your business so that someone else could follow them without asking you questions.",
+    financial: "Build a 6-month financial projection. Include scenario modeling for a 30% revenue drop. Identify the month where you would run out of runway and plan for it.",
+    mindset: "Find one peer or mentor who operates a similar business at a more advanced stage. Schedule monthly check-ins to discuss decisions before you make them.",
+    execution: "Choose the single highest-impact initiative in your business and set a 30-day sprint with weekly measurable milestones. Track completion rate at each checkpoint."
+  };
+
+  const quarterActions = {
+    strategic: "Test your riskiest business assumption with real market data. Run a small-scale experiment (pre-sales, landing page test, pilot program) and use the results to decide whether to pivot or commit.",
+    operational: "Take one full week away from daily operations. Measure what breaks. Use the results to build redundancy into your three most fragile processes.",
+    financial: "Conduct a unit economics review: customer acquisition cost, lifetime value, gross margin per service or product. Make one pricing or cost-structure change based on the findings.",
+    mindset: "Complete a structured feedback exercise. Ask 5 people (customers, collaborators, mentors) for honest feedback on your biggest weakness as a business operator. Research shows coaching readiness predicts engagement outcomes (Weinberg &amp; Hausfeld, 2024).",
+    execution: "Review all projects started in the last 90 days. Calculate your completion rate. Identify the pattern behind abandoned projects and build a go/no-go checklist for future initiatives."
+  };
+
+  const weakKey = gaps[0] ? gaps[0].dim.key : weakDim;
+  const secondKey = gaps[1] ? gaps[1].dim.key : weakDim;
+
+  return `
+    <div style="font-size:13px;color:#666;margin-bottom:16px;line-height:1.5;">Prioritized by your weakest dimensions. Each action targets a specific gap surfaced by your answers. Structure based on the progressive skill-building methodology in Lichtenstein & Lyons (2001).</div>
+    <div style="display:grid;gap:16px;">
+      <div style="background:#FFEBEE;border-radius:10px;padding:16px;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#C62828;font-weight:700;margin-bottom:8px;">This Week</div>
+        <div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:4px;">${DIMENSIONS.find(d => d.key === weakKey).label}</div>
+        <div style="font-size:13px;color:#444;line-height:1.6;">${weekActions[weakKey]}</div>
+      </div>
+      <div style="background:#FFF3E0;border-radius:10px;padding:16px;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#E65100;font-weight:700;margin-bottom:8px;">This Month</div>
+        <div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:4px;">${DIMENSIONS.find(d => d.key === weakKey).label}</div>
+        <div style="font-size:13px;color:#444;line-height:1.6;">${monthActions[weakKey]}</div>
+        ${secondKey !== weakKey ? `<div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(230,81,0,0.15);"><div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:4px;">${DIMENSIONS.find(d => d.key === secondKey).label}</div><div style="font-size:13px;color:#444;line-height:1.6;">${monthActions[secondKey]}</div></div>` : ""}
+      </div>
+      <div style="background:#E8F5E9;border-radius:10px;padding:16px;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#2E7D32;font-weight:700;margin-bottom:8px;">This Quarter</div>
+        <div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:4px;">${DIMENSIONS.find(d => d.key === weakKey).label}</div>
+        <div style="font-size:13px;color:#444;line-height:1.6;">${quarterActions[weakKey]}</div>
+        ${secondKey !== weakKey ? `<div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(46,125,50,0.15);"><div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:4px;">${DIMENSIONS.find(d => d.key === secondKey).label}</div><div style="font-size:13px;color:#444;line-height:1.6;">${quarterActions[secondKey]}</div></div>` : ""}
+      </div>
+    </div>
+  `;
+}
+
+// =========================================================
+// ENVIRONMENTAL CONTEXT (structural, not statistical)
+// =========================================================
+const ENV_DATA = {
+  north_america: {
+    label: "North America",
+    conditions: [
+      { dims: ["financial"], type: "advantage", text: "Deep venture capital and angel investor markets create more funding pathways than most regions", source: "GEM 2025/2026" },
+      { dims: ["strategic"], type: "advantage", text: "Large domestic market allows for early revenue traction without requiring international expansion", source: "GEM 2025/2026" },
+      { dims: ["mindset"], type: "challenge", text: "High cultural expectation of rapid scaling can push founders to grow before they are operationally ready", source: "GEM 2025/2026" },
+      { dims: ["operational"], type: "challenge", text: "High labor costs and competitive hiring markets make building operational teams expensive early on", source: "GEM 2025/2026" }
+    ]
+  },
+  western_europe: {
+    label: "Western Europe",
+    conditions: [
+      { dims: ["mindset"], type: "advantage", text: "Strong social safety nets reduce personal financial risk for founders which lowers the downside of failure", source: "GEM 2025/2026" },
+      { dims: ["operational"], type: "advantage", text: "Well-developed regulatory frameworks provide clear operational guidelines once understood", source: "World Bank B-READY 2024" },
+      { dims: ["financial"], type: "challenge", text: "Venture capital markets are smaller relative to North America which can limit growth-stage funding options", source: "GEM 2025/2026" },
+      { dims: ["strategic"], type: "challenge", text: "Fragmented markets across countries require early strategic clarity about which markets to serve", source: "GII 2024 (WIPO)" }
+    ]
+  },
+  eastern_europe: {
+    label: "Eastern Europe",
+    conditions: [
+      { dims: ["execution"], type: "advantage", text: "Lower operating costs create longer runway for the same amount of capital", source: "World Bank B-READY 2024" },
+      { dims: ["strategic"], type: "advantage", text: "Growing domestic markets with less saturation than Western Europe offer clearer positioning opportunities", source: "GEM 2025/2026" },
+      { dims: ["financial"], type: "challenge", text: "Limited early-stage capital availability means financial planning and bootstrapping skills are critical", source: "GEM 2025/2026" },
+      { dims: ["operational"], type: "challenge", text: "Evolving regulatory environments require founders to monitor compliance changes actively", source: "World Bank B-READY 2024" }
+    ]
+  },
+  south_asia: {
+    label: "South Asia",
+    conditions: [
+      { dims: ["strategic"], type: "advantage", text: "Very large domestic markets allow for significant scale within a single country", source: "GEM 2025/2026" },
+      { dims: ["execution"], type: "advantage", text: "High entrepreneurial activity rates mean access to peer networks and ecosystem support", source: "GEM 2025/2026" },
+      { dims: ["financial"], type: "challenge", text: "Formal credit access remains limited for early-stage ventures without collateral or track record", source: "World Bank B-READY 2024" },
+      { dims: ["operational"], type: "challenge", text: "Infrastructure inconsistency across regions means operational planning must account for logistics variability", source: "World Bank B-READY 2024" }
+    ]
+  },
+  southeast_asia: {
+    label: "Southeast Asia",
+    conditions: [
+      { dims: ["execution"], type: "advantage", text: "Fast-growing digital economies create strong tailwinds for tech-enabled business models", source: "GII 2024 (WIPO)" },
+      { dims: ["mindset"], type: "advantage", text: "Cultural emphasis on resourcefulness and adaptability supports entrepreneurial resilience", source: "GEM 2025/2026" },
+      { dims: ["financial"], type: "challenge", text: "Venture capital is concentrated in a few hub cities which limits access for founders elsewhere", source: "GEM 2025/2026" },
+      { dims: ["strategic"], type: "challenge", text: "Cross-border complexity across ASEAN markets requires early strategic decisions about geographic scope", source: "GII 2024 (WIPO)" }
+    ]
+  },
+  east_asia: {
+    label: "East Asia",
+    conditions: [
+      { dims: ["operational"], type: "advantage", text: "Strong manufacturing and supply chain infrastructure supports operational efficiency from early stages", source: "GII 2024 (WIPO)" },
+      { dims: ["execution"], type: "advantage", text: "High innovation output relative to input creates a productive environment for implementation-focused founders", source: "GII 2024 (WIPO)" },
+      { dims: ["mindset"], type: "challenge", text: "High fear of failure rates in several economies can slow decision-making and risk-taking", source: "GEM 2025/2026" },
+      { dims: ["financial"], type: "challenge", text: "Competitive markets require significant capital to achieve visibility which raises the financial bar for entry", source: "GEM 2025/2026" }
+    ]
+  },
+  middle_east: {
+    label: "Middle East and North Africa",
+    conditions: [
+      { dims: ["strategic"], type: "advantage", text: "Government-led diversification programs actively support new ventures in targeted sectors", source: "GEM 2025/2026" },
+      { dims: ["operational"], type: "advantage", text: "Several economies in the region have streamlined business registration and licensing processes", source: "World Bank B-READY 2024" },
+      { dims: ["mindset"], type: "challenge", text: "Social and family expectations around career stability can create internal tension for founders", source: "GEM 2025/2026" },
+      { dims: ["financial"], type: "challenge", text: "Outside government programs and sovereign wealth-backed funds, private early-stage capital can be limited", source: "GEM 2025/2026" }
+    ]
+  },
+  sub_saharan_africa: {
+    label: "Sub-Saharan Africa",
+    conditions: [
+      { dims: ["mindset"], type: "advantage", text: "Necessity-driven and opportunity-driven entrepreneurship both thrive, creating a resilient founder culture", source: "GEM 2025/2026" },
+      { dims: ["strategic"], type: "advantage", text: "Underserved markets across the continent present clear positioning opportunities for new entrants", source: "GEM 2025/2026" },
+      { dims: ["financial"], type: "challenge", text: "Access to formal financial services remains a structural barrier for most early-stage founders", source: "World Bank B-READY 2024" },
+      { dims: ["operational"], type: "challenge", text: "Infrastructure gaps in energy, logistics and connectivity require operational planning to include workarounds", source: "World Bank B-READY 2024" }
+    ]
+  },
+  latin_america: {
+    label: "Latin America",
+    conditions: [
+      { dims: ["execution"], type: "advantage", text: "High entrepreneurial activity rates across the region create strong founder communities and peer support", source: "GEM 2025/2026" },
+      { dims: ["mindset"], type: "advantage", text: "Growing cultural acceptance of entrepreneurship as a career path supports founder identity formation", source: "GEM 2025/2026" },
+      { dims: ["financial"], type: "challenge", text: "Currency volatility and inflation in several economies make financial planning more difficult", source: "World Bank B-READY 2024" },
+      { dims: ["operational"], type: "challenge", text: "Regulatory complexity and bureaucratic friction can slow operational setup and scaling", source: "World Bank B-READY 2024" }
+    ]
+  },
+  oceania: {
+    label: "Oceania (Australia and NZ)",
+    conditions: [
+      { dims: ["operational"], type: "advantage", text: "Strong rule of law and regulatory transparency simplify compliance and operational planning", source: "World Bank B-READY 2024" },
+      { dims: ["mindset"], type: "advantage", text: "Well-developed support ecosystems including accelerators and government grants reduce early risk", source: "GEM 2025/2026" },
+      { dims: ["strategic"], type: "challenge", text: "Small domestic markets mean international expansion strategy becomes important earlier than in larger economies", source: "GEM 2025/2026" },
+      { dims: ["financial"], type: "challenge", text: "Geographic isolation from major capital markets can increase the cost and effort of fundraising", source: "GEM 2025/2026" }
+    ]
+  }
+};
+
+function buildEnvironmentalContext(scores, region) {
+  if (!region || !ENV_DATA[region]) return "";
+  const env = ENV_DATA[region];
+  const scoreMap = {};
+  scores.forEach(s => { scoreMap[s.dim.key] = s.score; });
+
+  // Find which conditions are most relevant to this user's profile
+  const relevant = [];
+  env.conditions.forEach(c => {
+    c.dims.forEach(dimKey => {
+      const score = scoreMap[dimKey] || 0;
+      const dimLabel = (DIMENSIONS.find(d => d.key === dimKey) || {}).label || dimKey;
+      let relevance = "";
+      if (c.type === "challenge" && score < 2.5) {
+        relevance = `Your ${dimLabel} score is low (${score.toFixed(1)}/5) and this environmental factor makes it harder to compensate.`;
+      } else if (c.type === "challenge" && score >= 3.3) {
+        relevance = `Your strong ${dimLabel} score (${score.toFixed(1)}/5) helps you navigate this challenge.`;
+      } else if (c.type === "advantage" && score >= 3.3) {
+        relevance = `Your ${dimLabel} score (${score.toFixed(1)}/5) positions you to capitalize on this.`;
+      } else if (c.type === "advantage" && score < 2.5) {
+        relevance = `This is a regional advantage but your ${dimLabel} score (${score.toFixed(1)}/5) limits your ability to leverage it.`;
+      }
+      if (relevance) {
+        relevant.push({ ...c, dimKey, dimLabel, relevance, score });
+      }
+    });
+  });
+
+  if (relevant.length === 0) {
+    // Still show conditions without personalized relevance
+    return `<div style="padding:14px 16px;background:#FDFCFA;border:1px solid #E8E2D9;border-radius:12px;">
+      <div style="font-size:13px;font-weight:600;margin-bottom:8px;">Environmental context for ${env.label}</div>
+      <div style="font-size:12px;color:#555;line-height:1.7;">
+        ${env.conditions.map(c => `<div style="margin-bottom:8px;padding-left:14px;border-left:3px solid ${c.type === 'advantage' ? '#C8E6C9' : '#FFE0B2'};">
+          <span style="font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:${c.type === 'advantage' ? '#2E7D32' : '#E65100'};font-weight:600;">${c.type}</span><br/>
+          ${c.text}
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">Source: ${c.source}</div>
+        </div>`).join("")}
+      </div>
+    </div>`;
+  }
+
+  // Sort: challenges where user is weak first, then advantages where user is strong
+  relevant.sort((a, b) => {
+    const aWeight = (a.type === "challenge" && a.score < 2.5) ? 0 : (a.type === "advantage" && a.score < 2.5) ? 1 : (a.type === "challenge") ? 2 : 3;
+    const bWeight = (b.type === "challenge" && b.score < 2.5) ? 0 : (b.type === "advantage" && b.score < 2.5) ? 1 : (b.type === "challenge") ? 2 : 3;
+    return aWeight - bWeight;
+  });
+
+  return `<div style="padding:14px 16px;background:#FDFCFA;border:1px solid #E8E2D9;border-radius:12px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:4px;">How ${env.label} affects your profile</div>
+    <div style="font-size:11px;color:#999;margin-bottom:10px;">Structural conditions connected to your scores. Sources: GEM 2025/2026, GII 2024, World Bank B-READY 2024.</div>
+    <div style="font-size:12px;color:#555;line-height:1.7;">
+      ${relevant.map(r => `<div style="margin-bottom:10px;padding:8px 12px;border-left:3px solid ${r.type === 'advantage' ? '#C8E6C9' : '#FFE0B2'};background:${r.type === 'advantage' ? 'rgba(200,230,201,0.08)' : 'rgba(255,224,178,0.08)'};">
+        <span style="font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:${r.type === 'advantage' ? '#2E7D32' : '#E65100'};font-weight:600;">${r.type} &middot; ${r.dimLabel}</span><br/>
+        ${r.text}
+        <div style="margin-top:4px;font-size:11px;color:#82ABE3;font-weight:500;">${r.relevance}</div>
+        <div style="font-size:10px;color:#aaa;margin-top:2px;">Source: ${r.source}</div>
+      </div>`).join("")}
+    </div>
+  </div>`;
+}
+
+// =========================================================
+// DEEP DIVE: PATTERNS AND BAR CHART
+// =========================================================
+function renderDeepDivePatterns(scores, scoreMap, matched) {
+  // Bar chart in deep dive
+  if (barChartInstance) barChartInstance.destroy();
+  const barColors = scores.map(s => getMaturityLevel(s.score).color);
+  barChartInstance = new Chart($("bar-chart").getContext("2d"), {
+    type: "bar",
+    data: {
+      labels: DIMENSIONS.map(d => d.label),
+      datasets: [
+        { label: "Your Score", data: scores.map(s => parseFloat(s.score.toFixed(2))), backgroundColor: barColors, borderRadius: 4 }
+      ]
+    },
+    options: {
+      indexAxis: "y", responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { position: "bottom", labels: { font: { family: "DM Sans", size: 12 } } } },
+      scales: { x: { min: 0, max: 5, ticks: { stepSize: 1 }, grid: { color: "#F0EDE6" } }, y: { grid: { display: false }, ticks: { font: { family: "DM Sans", size: 11 } } } }
+    }
+  });
+
+  // Full patterns list
+  $("patterns-list-full").innerHTML = matched.length
+    ? matched.map(p => `<div class="pattern-card"><div class="pattern-icon">${p.icon}</div><div class="pattern-label">${p.label}</div><div class="pattern-desc">${p.desc}</div><div style="margin-top:6px;font-size:11px;color:#999;font-style:italic;">Source: ${p.cite}</div><span class="pattern-tag ${p.type}">${p.type}</span></div>`).join("")
+    : `<div class="note-box">No strong diagnostic patterns detected. Your readiness is relatively balanced across dimensions.</div>`;
+}
+
+// =========================================================
+// STRUCTURED DIMENSIONS
+// =========================================================
+function renderStructuredDimensions(scores) {
+  // Accordion breakdown
+  $("structured-dimensions-body").innerHTML = scores.map(s => {
+    const dimQs = QUESTIONS.map((q, i) => ({ q, i })).filter(x => x.q.dim === s.dim.key);
+    const c = classify(s.score);
+    const criteriaHtml = dimQs.map((x, n) => {
+      const ans = state.answers[x.i];
+      let ansText = "Skipped";
+      let ansColor = "#999";
+      if (x.q.type === "open") {
+        ansText = (typeof ans === "string" && ans.trim()) ? "Responded" : "Skipped";
+        ansColor = ansText === "Responded" ? "#82ABE3" : "#999";
+      } else if (typeof ans === "number") {
+        ansText = `${ans}/5`;
+        ansColor = ans >= 4 ? "#2E7D32" : ans >= 3 ? "#E65100" : "#C62828";
+      }
+      const typeIcon = { likert: "1-5", yesno: "Y/N", mc: "MC", open: "TXT" }[x.q.type] || "";
+      return `<div class="criteria-row"><div class="criteria-num">${n + 1}</div><div class="criteria-text">${x.q.text} <span style="font-size:10px;color:#aaa;text-transform:uppercase;">[${typeIcon}]</span></div><div class="criteria-score" style="color:${ansColor}">${ansText}</div></div>`;
+    }).join("");
+
+    return `
+      <div class="dimension-accordion">
+        <button class="dimension-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="dim-h-left"><span class="dim-h-name">${s.dim.label}</span></div>
+          <div style="display:flex;align-items:center;"><span class="dim-h-score score-${c}">${s.score.toFixed(1)}/5</span><span class="dim-h-arrow">&#x25BC;</span></div>
+        </button>
+        <div class="dimension-body">
+          ${criteriaHtml}
+          <div class="dim-grounding-box"><strong>Framework:</strong> ${s.dim.cite}<br/><span class="cite">${s.dim.why}</span></div>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+// Tabs removed - all content now visible in Step 4 (Full Details)
+
+// =========================================================
+// RECOMMENDATION
+// =========================================================
+function buildRecommendation(level, gaps, strengths, screening) {
+  const weakest = gaps[0].dim.label;
+  const weakestKey = gaps[0].dim.key;
+  const necessity = screening.origin === "necessity";
+  const cashUrgent = screening.future === "reluctant founder";
+  const coach = getCoachabilityLevel();
+
+  let headline, body, steps = [];
+
+  if (level === "high" && coach.level === "low") {
+    headline = "High readiness but low follow-through on professional advice.";
+    body = `Your scores are strong across most dimensions. However your responses to consulting-readiness questions suggest limited experience implementing professional recommendations. A consulting engagement will only produce results if you commit to acting on what you receive. Consider starting with a short structured engagement with clear accountability checkpoints.`;
+    steps = [
+      `Before engaging a consultant, write down the last 3 pieces of professional advice you received and whether you acted on each one. Identify the pattern.`,
+      `Start with a 30-day micro-engagement focused only on ${weakest}. Commit to implementing every recommendation before expanding scope.`,
+      `Set up a weekly accountability check-in (with the consultant or a peer) to track follow-through on each action item.`
+    ];
+  } else if (level === "high") {
+    headline = "Ready for a targeted consulting engagement.";
+    body = `You have foundational clarity across most dimensions. Consulting will compound your existing momentum. Focus the engagement on scaling, optimization or your single weakest area: ${weakest}.`;
+    steps = [
+      `Define one specific outcome you want from consulting (e.g. "double monthly revenue" or "launch in a new market").`,
+      `Scope the engagement around your weakest dimension (${weakest}) to neutralize the bottleneck.`,
+      `Set 30/60/90-day milestones with measurable outcomes before the engagement starts.`
+    ];
+  } else if (level === "mod" && coach.level === "high") {
+    headline = "Strong coachability with room to grow. Consulting will accelerate you.";
+    body = `Your readiness has gaps but your track record of implementing professional advice is strong. This means a consulting engagement is likely to produce real results. Focus the engagement on closing your gap in ${weakest.toLowerCase()} first.`;
+    steps = [
+      `Address your weakest dimension first: ${weakest}.`,
+      `Leverage your implementation strengths: ask your consultant for specific weekly actions rather than broad strategy documents.`,
+      `Prepare 3 months of basic financial data (revenue, expenses and cash flow). Consulting is far more effective when the numbers are visible.`
+    ];
+  } else if (level === "mod") {
+    headline = "Consulting can help, but readiness varies by dimension.";
+    body = `You have real strengths to build on, with notable gaps in ${weakest.toLowerCase()}. A focused engagement that addresses your weakest dimension first will produce far more value than a broad strategy review.`;
+    steps = [
+      `Address your weakest dimension first: ${weakest}.`,
+      `Document the 2 to 3 most critical processes in your business before engaging a consultant.`,
+      `Prepare 3 months of basic financial data (revenue, expenses and cash flow). Consulting is far more effective when the numbers are visible.`
+    ];
+  } else {
+    headline = "Foundational work is needed before broad consulting.";
+    body = `Your profile shows multiple significant gaps. Engaging a strategy consultant now would produce recommendations that are hard to implement. Build foundations first, then consulting will multiply your effort.`;
+    steps = [
+      `Spend 30 days strengthening your weakest dimension: ${weakest}.`,
+      `Consider mentoring, peer groups or capacity-building programs before formal consulting.`,
+      `Build basic financial visibility (track revenue and expenses weekly). This alone shifts decision quality dramatically.`
+    ];
+  }
+
+  if (cashUrgent || necessity) {
+    steps.unshift(`Given your situation, prioritize revenue-generating activity for the next 60 to 90 days. Strategic optimization can wait. Cash flow cannot.`);
+  }
+  if (screening.origin === "opportunity" && level === "high") {
+    steps.push(`As an opportunity-driven entrepreneur with high readiness, consider whether your next move is scaling, raising capital or productizing. Frame consulting around that lever.`);
+  }
+
+  // Response-specific actions based on actual Yes/No and MC answers
+  const responseActions = buildResponseSpecificActions(weakestKey);
+  if (responseActions.length > 0) {
+    steps.push(...responseActions);
+  }
+
+  return { headline, body, steps };
+}
+
+function buildResponseSpecificActions(weakestDimKey) {
+  const actions = [];
+  const scoredQs = QUESTIONS.map((q, i) => ({ q, i })).filter(x => x.q.type !== "open");
+
+  // Find questions where the user scored 1-2 (low) and generate specific actions
+  const lowScoreActions = {
+    "strategic": [
+      "Dedicate 2 hours this week to writing a one-page strategic clarity document: who you serve, what problem you solve, why you are different.",
+      "Schedule 5 customer conversations this month. Ask them what problem they are trying to solve and what alternatives they have tried.",
+      "Write down your 3 riskiest assumptions. Pick the one that would kill your business if wrong. Design a test you can run in 7 days."
+    ],
+    "operational": [
+      "Pick your most critical daily task and write a step-by-step guide someone else could follow. Test it by having someone else try it.",
+      "Map your core business process from start to finish. Identify where delays or dependencies create risk. Name your single biggest bottleneck.",
+      "Identify one task you do every day that someone else could handle. Find that person or service this week."
+    ],
+    "financial": [
+      "Start tracking revenue and expenses weekly in a simple spreadsheet. Calculate your break-even point this week.",
+      "Calculate your personal monthly expenses. Divide your savings by that number. That is your runway in months.",
+      "Calculate your customer acquisition cost: total marketing/sales spend divided by new customers acquired. Compare it to profit per customer."
+    ],
+    "mindset": [
+      "Ask one person with relevant expertise to poke holes in your business approach this week. Change at least one thing based on what they say.",
+      "Identify the specific skill gap that is most limiting your business right now. Find a course, mentor or hire that addresses it within 30 days.",
+      "If you have received professional advice before and did not follow through, write down why. Address the pattern before investing in consulting."
+    ],
+    "execution": [
+      "Set a concrete next milestone within the next 30 days. Break the work into weekly deliverables. Tell someone who will hold you accountable.",
+      "Write down 5 specific names of people who could help you test, launch or sell your product. Contact the first one today.",
+      "If you have never sold to a stranger, make that your number one priority this week. One sale to someone outside your network changes everything."
+    ]
+  };
+
+  // Count low scores per dimension
+  const dimLowCounts = {};
+  scoredQs.forEach(({ q, i }) => {
+    if (state.answers[i] !== null && state.answers[i] <= 2) {
+      if (!dimLowCounts[q.dim]) dimLowCounts[q.dim] = 0;
+      dimLowCounts[q.dim]++;
+    }
+  });
+
+  // Add actions for weakest dimension first, then others with significant gaps
+  const dims = Object.keys(dimLowCounts).sort((a, b) => dimLowCounts[b] - dimLowCounts[a]);
+  dims.forEach(dim => {
+    if (dimLowCounts[dim] >= 2 && lowScoreActions[dim]) {
+      const availableActions = lowScoreActions[dim].filter(a => !actions.some(existing => existing === a));
+      if (availableActions.length > 0) actions.push(availableActions[0]);
+    }
+  });
+
+  // Check MC answers for low scores in weakest dimension
+  const mcQs = QUESTIONS.map((q, i) => ({ q, i })).filter(x => x.q.type === "mc");
+  mcQs.forEach(({ q, i }) => {
+    if (state.answers[i] !== null && state.answers[i] <= 2 && q.dim === weakestDimKey) {
+      const mcAction = lowScoreActions[q.dim];
+      if (mcAction && mcAction.length > 1 && !actions.some(a => a === mcAction[1])) {
+        actions.push(mcAction[1]);
+      }
+    }
+  });
+
+  // Limit to top 3 most relevant actions
+  return actions.slice(0, 3);
+}
+
+// =========================================================
+// SUMMARY TEXT
+// =========================================================
+function buildSummaryText() {
+  const d = window._reportData;
+  if (!d) return "";
+  const stageLabels = { idea: "Idea stage", early: "Early stage (<12mo)", growing: "Growing (1-3yr)", established: "Established (3yr+)" };
+  const lines = [
+    `ENTREPRENEUR READINESS PROFILE`,
+    `Manisha Mozumder Business Consulting Services`,
+    `=================================================`,
+    ``,
+    `Name:        ${state.user.name}`,
+    `Business:    ${state.user.business || "(not provided)"}`,
+    `Stage:       ${stageLabels[state.user.stage] || state.user.stage}`,
+    ``,
+    `OVERALL SCORE: ${d.overall.toFixed(1)} / 5  (${d.overallCls.label.toUpperCase()})`,
+    `Maturity:      ${getMaturityLevel(d.overall).label}`,
+    `Levels:        Advanced 4.1+ | Competent 3.3+ | Developing 2.5+ | Aware 1.9+ | Unaware <1.9`,
+    ``,
+    `DIMENSION SCORES`,
+    ...d.scores.map(s => {
+      const m = getMaturityLevel(s.score);
+      return `  * ${s.dim.label}: ${s.score.toFixed(1)} / 5  (${m.label})`;
+    }),
+    ``,
+    `CONSULTING READINESS`,
+    `  ${d.rec.headline}`,
+    `  ${d.rec.body}`,
+    ``,
+    `HIGHEST-LEVERAGE GAPS`,
+    ...(() => {
+      const allScoredQs = QUESTIONS.map((q, i) => ({ q, i })).filter(x => x.q.type !== "open");
+      const lowAnswers = allScoredQs
+        .filter(x => typeof state.answers[x.i] === "number" && state.answers[x.i] <= 2)
+        .sort((a, b) => state.answers[a.i] - state.answers[b.i])
+        .slice(0, 5);
+      return lowAnswers.length
+        ? lowAnswers.map(x => {
+            const dim = DIMENSIONS.find(dd => dd.key === x.q.dim);
+            return `  * [${dim ? dim.label : ""}] ${x.q.text} (${state.answers[x.i]}/5)`;
+          })
+        : ["  * No answers scored at 2 or below."];
+    })(),
+    ``,
+    `RECOMMENDATION`,
+    `  ${d.rec.steps.join("\n  ")}`,
+    ``,
+    ...(() => {
+      if (!state.user.region || !ENV_DATA[state.user.region]) return [];
+      const env = ENV_DATA[state.user.region];
+      return [
+        `ENVIRONMENTAL CONTEXT: ${env.label.toUpperCase()}`,
+        ...env.conditions.map(c => `  * [${c.type.toUpperCase()}] ${c.text} (${c.source})`),
+        ``
+      ];
+    })(),
+    `=================================================`
+  ];
+  return lines.join("\n");
+}
+
+// =========================================================
+// EXPORT / RESTART
+// =========================================================
+$("export-btn").addEventListener("click", async () => {
+  const d = window._reportData;
+  if (!d) { alert("No results data found. Please complete the assessment first."); return; }
+  const fileName = `Readiness_Profile_${(state.user.name || "Profile").replace(/\s+/g, "_")}.pdf`;
+  const stageLabels = { idea: "Idea stage", early: "Early stage", growing: "Growing (1-3yr)", established: "Established (3yr+)" };
+
+  // Capture radar chart as image
+  const radarImg = $("radar-chart") ? $("radar-chart").toDataURL("image/png") : "";
+
+  // Build PDF using jsPDF directly (no html2canvas -- works on all browsers)
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
+  const pw = pdf.internal.pageSize.getWidth();
+  const ph = pdf.internal.pageSize.getHeight();
+  const mx = 14;
+  const maxW = pw - mx * 2;
+  let y = 14;
+
+  function checkPage(need) { if (y + need > ph - 12) { pdf.addPage(); y = 14; } }
+  function hexToRgb(h) { const r = parseInt(h.slice(1,3),16), g = parseInt(h.slice(3,5),16), b = parseInt(h.slice(5,7),16); return [r,g,b]; }
+
+  // --- HEADER ---
+  pdf.setFont("helvetica", "bold"); pdf.setFontSize(16); pdf.setTextColor(26,26,26);
+  pdf.text("Manisha Mozumder", pw/2, y, {align:"center"}); y += 5;
+  pdf.setFont("helvetica", "normal"); pdf.setFontSize(8); pdf.setTextColor(130,171,227);
+  pdf.text("BUSINESS CONSULTING SERVICES", pw/2, y, {align:"center"}); y += 10;
+
+  // --- TITLE ---
+  pdf.setFontSize(8); pdf.setTextColor(130,171,227);
+  pdf.text("READINESS PROFILE", pw/2, y, {align:"center"}); y += 6;
+  pdf.setFont("helvetica", "bold"); pdf.setFontSize(18); pdf.setTextColor(26,26,26);
+  pdf.text((state.user.name || "Your") + "'s Profile", pw/2, y, {align:"center"}); y += 7;
+
+  // Overall badge
+  const ml = getMaturityLevel(d.overall);
+  const [br,bg,bb] = hexToRgb(ml.bg); const [cr,cg,cb] = hexToRgb(ml.color);
+  pdf.setFillColor(br,bg,bb); pdf.roundedRect(pw/2 - 20, y - 3.5, 40, 7, 3, 3, "F");
+  pdf.setFont("helvetica", "bold"); pdf.setFontSize(9); pdf.setTextColor(cr,cg,cb);
+  pdf.text(ml.label, pw/2, y + 1, {align:"center"}); y += 12;
+
+  // --- INFO TABLE ---
+  pdf.setFontSize(9); pdf.setTextColor(150,150,150); pdf.setFont("helvetica", "normal");
+  const info = [
+    ["Name", state.user.name, "Business", state.user.business || "(not provided)"],
+    ["Stage", stageLabels[state.user.stage] || state.user.stage, "Overall Score", d.overall.toFixed(1) + " / 5"],
+    ["Maturity Level", ml.label, "Questions scored", String(QUESTIONS.filter(q=>q.type!=="open").length)]
+  ];
+  info.forEach(row => {
+    pdf.setTextColor(150,150,150); pdf.setFont("helvetica","normal"); pdf.setFontSize(9);
+    pdf.text(row[0], mx, y); pdf.text(row[2], pw/2 + 5, y);
+    pdf.setTextColor(26,26,26); pdf.setFont("helvetica","bold");
+    pdf.text(row[1], mx + 32, y); pdf.text(row[3], pw/2 + 42, y);
+    y += 6;
+  });
+  y += 4;
+
+  // --- RADAR CHART IMAGE ---
+  if (radarImg) {
+    checkPage(65);
+    pdf.setFont("helvetica","bold"); pdf.setFontSize(11); pdf.setTextColor(26,26,26);
+    pdf.text("Dimension Profile", pw/2, y, {align:"center"}); y += 4;
+    pdf.addImage(radarImg, "PNG", pw/2 - 40, y, 80, 55);
+    y += 58;
+  }
+
+  // --- MATURITY TABLE ---
+  checkPage(50);
+  pdf.setFont("helvetica","bold"); pdf.setFontSize(11); pdf.setTextColor(26,26,26);
+  pdf.text("Readiness Maturity Profile", mx, y); y += 6;
+  // Header row
+  pdf.setFillColor(245,245,245); pdf.rect(mx, y - 3.5, maxW, 6, "F");
+  pdf.setFont("helvetica","bold"); pdf.setFontSize(8); pdf.setTextColor(80,80,80);
+  pdf.text("Dimension", mx + 2, y); pdf.text("Score", mx + 95, y); pdf.text("Maturity", mx + 115, y); y += 6;
+  // Data rows
+  d.scores.forEach(s => {
+    const m = getMaturityLevel(s.score);
+    const [mcr,mcg,mcb] = hexToRgb(m.color);
+    checkPage(8);
+    pdf.setFont("helvetica","bold"); pdf.setFontSize(8); pdf.setTextColor(26,26,26);
+    pdf.text(s.dim.label, mx + 2, y);
+    // Score bar
+    pdf.setFillColor(230,230,230); pdf.rect(mx + 48, y - 3, 42, 4, "F");
+    pdf.setFillColor(mcr,mcg,mcb); pdf.rect(mx + 48, y - 3, 42 * s.score / 5, 4, "F");
+    // Score text
+    pdf.setTextColor(mcr,mcg,mcb); pdf.setFont("helvetica","bold");
+    pdf.text(s.score.toFixed(1), mx + 95, y);
+    pdf.text(m.label, mx + 115, y);
+    y += 7;
+  });
+  pdf.setFont("helvetica","italic"); pdf.setFontSize(7); pdf.setTextColor(150,150,150);
+  pdf.text("Maturity model: Lichtenstein & Lyons (2001), Kutzhanova et al. (2009). 5-level competency progression.", mx, y); y += 8;
+
+  // --- CONSULTING READINESS ---
+  checkPage(30);
+  pdf.setFillColor(248,246,243); pdf.roundedRect(mx, y - 2, maxW, 4, 2, 2, "F");
+  pdf.setFont("helvetica","normal"); pdf.setFontSize(7); pdf.setTextColor(130,171,227);
+  pdf.text("CONSULTING READINESS", mx + 3, y + 1); y += 7;
+  pdf.setFont("helvetica","bold"); pdf.setFontSize(12); pdf.setTextColor(26,26,26);
+  const headLines = pdf.splitTextToSize(d.rec.headline, maxW - 6);
+  pdf.text(headLines, mx + 3, y); y += headLines.length * 5 + 2;
+  pdf.setFont("helvetica","normal"); pdf.setFontSize(9); pdf.setTextColor(85,85,85);
+  const bodyLines = pdf.splitTextToSize(d.rec.body, maxW - 6);
+  pdf.text(bodyLines, mx + 3, y); y += bodyLines.length * 4 + 3;
+  if (d.coachabilityInsight) {
+    pdf.setDrawColor(130,171,227); pdf.setLineWidth(0.5);
+    const ciLines = pdf.splitTextToSize(d.coachabilityInsight.replace(/<[^>]+>/g, ""), maxW - 10);
+    checkPage(ciLines.length * 4 + 6);
+    pdf.line(mx + 3, y, mx + 3, y + ciLines.length * 4 + 2);
+    pdf.setFont("helvetica","italic"); pdf.setFontSize(8); pdf.setTextColor(68,68,68);
+    pdf.text(ciLines, mx + 6, y + 2); y += ciLines.length * 4 + 6;
+  }
+  y += 4;
+
+  // --- HIGHEST-LEVERAGE GAPS ---
+  checkPage(20);
+  pdf.setFont("helvetica","bold"); pdf.setFontSize(11); pdf.setTextColor(26,26,26);
+  pdf.text("Highest-Leverage Gaps", mx, y); y += 6;
+  const allScoredQs = QUESTIONS.map((q, i) => ({ q, i })).filter(x => x.q.type !== "open");
+  const lowAnswers = allScoredQs
+    .filter(x => typeof state.answers[x.i] === "number" && state.answers[x.i] <= 2)
+    .sort((a, b) => state.answers[a.i] - state.answers[b.i]).slice(0, 5);
+  if (lowAnswers.length === 0) {
+    pdf.setFont("helvetica","normal"); pdf.setFontSize(9); pdf.setTextColor(100,100,100);
+    pdf.text("No answers scored at 2 or below.", mx + 3, y); y += 6;
+  } else {
+    lowAnswers.forEach(x => {
+      const dim = DIMENSIONS.find(dd => dd.key === x.q.dim);
+      checkPage(10);
+      pdf.setFont("helvetica","bold"); pdf.setFontSize(8); pdf.setTextColor(130,171,227);
+      const dimLabel = dim ? dim.label + ": " : "";
+      pdf.text(dimLabel, mx + 3, y);
+      const dimLabelW = pdf.getTextWidth(dimLabel);
+      pdf.setFont("helvetica","normal"); pdf.setTextColor(26,26,26);
+      const qText = x.q.text;
+      const remaining = maxW - 6 - dimLabelW - 15;
+      const qLines = pdf.splitTextToSize(qText, remaining > 40 ? remaining : maxW - 20);
+      pdf.text(qLines[0], mx + 3 + dimLabelW, y);
+      if (qLines.length > 1) { for (let li = 1; li < qLines.length; li++) { y += 4; pdf.text(qLines[li], mx + 6, y); } }
+      pdf.setFont("helvetica","bold"); pdf.setTextColor(198,40,40);
+      pdf.text("(" + state.answers[x.i] + "/5)", mx + maxW - 12, y);
+      y += 6;
+    });
+  }
+  y += 3;
+
+  // --- ACTION PLAN ---
+  checkPage(20);
+  pdf.setFont("helvetica","bold"); pdf.setFontSize(11); pdf.setTextColor(26,26,26);
+  pdf.text("Action Plan", mx, y); y += 6;
+  d.rec.steps.forEach((step, i) => {
+    const stepLines = pdf.splitTextToSize((i+1) + ". " + step, maxW - 6);
+    checkPage(stepLines.length * 4 + 3);
+    pdf.setFont("helvetica","normal"); pdf.setFontSize(9); pdf.setTextColor(50,50,50);
+    pdf.text(stepLines, mx + 3, y); y += stepLines.length * 4 + 2;
+  });
+  y += 4;
+
+  // --- ENVIRONMENTAL CONTEXT ---
+  if (state.user.region && ENV_DATA[state.user.region]) {
+    const env = ENV_DATA[state.user.region];
+    checkPage(20);
+    pdf.setFont("helvetica","bold"); pdf.setFontSize(11); pdf.setTextColor(26,26,26);
+    pdf.text("Environmental Context: " + env.label, mx, y); y += 6;
+    env.conditions.forEach(c => {
+      const isAdv = c.type === "advantage";
+      const tag = c.type.toUpperCase() + ": ";
+      const cLines = pdf.splitTextToSize(tag + c.text + " (" + c.source + ")", maxW - 10);
+      checkPage(cLines.length * 4 + 4);
+      pdf.setDrawColor(isAdv ? 200 : 255, isAdv ? 230 : 224, isAdv ? 201 : 178);
+      pdf.setLineWidth(0.6);
+      pdf.line(mx + 2, y - 2, mx + 2, y + cLines.length * 4);
+      pdf.setFont("helvetica","bold"); pdf.setFontSize(7); pdf.setTextColor(isAdv ? 46 : 230, isAdv ? 125 : 81, isAdv ? 50 : 0);
+      pdf.text(tag, mx + 5, y);
+      const tagW = pdf.getTextWidth(tag);
+      pdf.setFont("helvetica","normal"); pdf.setFontSize(8); pdf.setTextColor(85,85,85);
+      const restLines = pdf.splitTextToSize(c.text + " (" + c.source + ")", maxW - 10 - tagW);
+      pdf.text(restLines[0], mx + 5 + tagW, y);
+      if (restLines.length > 1) { for (let li = 1; li < restLines.length; li++) { y += 3.5; pdf.text(restLines[li], mx + 5, y); } }
+      y += 5;
+    });
+    y += 3;
+  }
+
+  // --- REFLECTIONS ---
+  const openQs = QUESTIONS.map((q, i) => ({ q, i })).filter(x => x.q.type === "open");
+  const reflections = openQs
+    .filter(x => state.answers[x.i] && typeof state.answers[x.i] === "string" && state.answers[x.i].trim().length > 0)
+    .map(x => ({ question: x.q.text, answer: state.answers[x.i].trim() }));
+
+  if (reflections.length > 0) {
+    pdf.addPage(); y = 14;
+    pdf.setFont("helvetica","bold"); pdf.setFontSize(14); pdf.setTextColor(26,26,26);
+    pdf.text("Your Reflections", mx, y); y += 10;
+    reflections.forEach(r => {
+      pdf.setFont("helvetica","bold"); pdf.setFontSize(10); pdf.setTextColor(26,26,26);
+      const qLines = pdf.splitTextToSize(r.question, maxW);
+      checkPage(qLines.length * 5 + 10);
+      pdf.text(qLines, mx, y); y += qLines.length * 5 + 2;
+      pdf.setFont("helvetica","italic"); pdf.setFontSize(10); pdf.setTextColor(85,85,85);
+      const aLines = pdf.splitTextToSize('"' + r.answer + '"', maxW - 6);
+      checkPage(aLines.length * 5 + 8);
+      pdf.setDrawColor(130,171,227); pdf.setLineWidth(0.6);
+      pdf.line(mx, y - 3, mx, y + aLines.length * 5 + 2);
+      pdf.text(aLines, mx + 4, y); y += aLines.length * 5 + 10;
+    });
+  }
+
+  // --- FOOTER ---
+  const totalPages = pdf.internal.getNumberOfPages();
+  for (let p = 1; p <= totalPages; p++) {
+    pdf.setPage(p);
+    pdf.setFont("helvetica","normal"); pdf.setFontSize(7); pdf.setTextColor(170,170,170);
+    pdf.text("Manisha Mozumder Business Consulting Services", pw/2, ph - 6, {align:"center"});
+    pdf.text("This is a screening tool, not a diagnostic instrument.", pw/2, ph - 3, {align:"center"});
+  }
+
+  pdf.save(fileName);
+});
+
+$("restart-btn").addEventListener("click", () => {
+  clearProgress();
+  state.user = { name: "", business: "", stage: "", region: "" };
+  state.screening = {};
+  state.answers = [];
+  state.index = 0;
+  QUESTIONS = [];
+  $("user-name").value = "";
+  $("user-business").value = "";
+  $("user-stage").value = "";
+  $("user-region").value = "";
+  $("cta-email").value = "";
+  $("cta-note").value = "";
+  $("cta-confirm").textContent = "";
+  if (radarChartInstance) { radarChartInstance.destroy(); radarChartInstance = null; }
+  if (gaugeChartInstance) { gaugeChartInstance.destroy(); gaugeChartInstance = null; }
+  if (barChartInstance) { barChartInstance.destroy(); barChartInstance = null; }
+  showScreen("screen-welcome");
+});
+
+const CONSULTANT_EMAIL = "hello@manishamozumder.com";
+
+$("send-email-btn").addEventListener("click", () => {
+  const email = $("cta-email").value.trim();
+  const note = $("cta-note").value.trim();
+  if (!email || !email.includes("@")) {
+    $("cta-confirm").textContent = "Please enter a valid email first.";
+    $("cta-confirm").style.color = "#C62828";
+    return;
+  }
+  const summary = buildSummaryText();
+  const subject = `Readiness Profile: ${state.user.name} (${window._reportData.overall.toFixed(1)}/5, ${window._reportData.overallCls.label})`;
+  const body = [
+    `Hi Manisha,`, ``,
+    `I just completed the Entrepreneur Readiness Assessment. Here is my profile:`, ``,
+    summary, ``,
+    `My email: ${email}`,
+    note ? `What I would like to discuss: ${note}` : "", ``,
+    `Looking forward to hearing from you.`, ``,
+    `Best,`, state.user.name
+  ].filter(Boolean).join("\n");
+  window.location.href = `mailto:${CONSULTANT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  $("cta-confirm").style.color = "#2E7D32";
+  $("cta-confirm").textContent = "Opening your email app. If nothing happens, use Copy summary and email manually.";
+});
+
+// Sources modal
+$("open-sources-btn").addEventListener("click", () => { $("sources-modal-overlay").classList.add("active"); });
+$("close-sources-btn").addEventListener("click", () => { $("sources-modal-overlay").classList.remove("active"); });
+$("sources-modal-overlay").addEventListener("click", (e) => { if (e.target === $("sources-modal-overlay")) $("sources-modal-overlay").classList.remove("active"); });
+
+$("copy-summary-btn").addEventListener("click", async () => {
+  const summary = buildSummaryText();
+  try {
+    await navigator.clipboard.writeText(summary);
+    $("cta-confirm").style.color = "#2E7D32";
+    $("cta-confirm").textContent = "Summary copied to clipboard.";
+  } catch (e) {
+    const ta = document.createElement("textarea");
+    ta.value = summary;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    $("cta-confirm").style.color = "#2E7D32";
+    $("cta-confirm").textContent = "Summary copied to clipboard.";
+  }
+});
+</script>
+</body>
+</html>
