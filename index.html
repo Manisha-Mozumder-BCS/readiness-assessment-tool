@@ -1609,11 +1609,11 @@ function renderResults() {
   // Structured action plan (This Week / This Month / This Quarter)
   $("action-plan-body").innerHTML = buildActionPlan(gaps, strengths, weakest, overallCls.key);
 
-  // Environmental context (only if region selected)
+  // Environmental context (only if region selected). Populated but kept hidden
+  // from the entrepreneur (shown to the company on the dashboard instead).
   const envHtml = buildEnvironmentalContext(scores, state.user.region);
   if (envHtml) {
     $("env-context-body").innerHTML = envHtml;
-    $("env-context-section").style.display = "block";
   }
 
   // Open-ended reflections
